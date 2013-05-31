@@ -1,0 +1,39 @@
+/* -- */
+println("Loading custom properties...")
+
+grails.serverURL = "http://yourdomain:8080/${appName}"
+
+dataSource {
+	pooled = true
+	driverClassName = "com.mysql.jdbc.Driver"
+	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+	dbCreate = "update" // one of 'create', 'create-drop','update'
+	url = "jdbc:mysql://localhost/openplenary?useUnicode=yes&characterEncoding=UTF-8"
+	username = "user"
+	password = "password"
+}
+
+grails {
+	mail {
+		host = "smtp.foo.bar"
+		port = 465
+		username = "user@foo.bar"
+		password = "passwd"
+		props = ["mail.smtp.auth":"true",
+				 "mail.smtp.socketFactory.port":"465",
+				 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+				 "mail.smtp.socketFactory.fallback":"false"]
+	
+	}
+}
+
+grails.openplenary.mail.from = 'user@foo.bar'
+grails.openplenary.layout = 'main'
+grails.openplenary.name = 'FooCity'
+grails.openplenary.voting.allowAnonymous = false
+grails.openplenary.voting.maxAnonymousVotes = 5
+
+grails.plugins.springsecurity.facebook.appId='yourAppId'
+grails.plugins.springsecurity.facebook.secret='yourSecret'
+grails.plugins.springsecurity.twitter.consumerKey='yourKey'
+grails.plugins.springsecurity.twitter.consumerSecret='yourSecret'

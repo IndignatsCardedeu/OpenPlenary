@@ -1,0 +1,815 @@
+body {
+	background-color: #FFFFFF;
+	margin: 0;
+	padding: 0;
+	font-family: "Droid Sans", Arial, Helvetica, sans-serif;
+	
+}
+
+a {
+	text-decoration: none;
+}
+
+p a {
+	text-decoration: underline;
+}
+
+ul {
+	list-style: none;
+    font-size: 12px;       
+}
+
+ul li {
+	background-repeat: no-repeat;	
+	background-image: url("../../images/main/bullet.png");
+	background-position: left;
+	padding: 10px 0 0 12px;
+	margin-bottom: 8px;	
+}
+
+ol li {
+	font-size: 12px; 
+	padding: 5px 0 0 6px;
+			
+}
+
+.message {
+	border: 1px solid #00529B;
+	background-color: #BDE5F8;
+	padding: 5px;
+	margin: 0 0 20px 0;
+}
+
+.errors {
+	color: #D8000C;
+}
+
+div.error {
+	border: 1px solid #D8000C;
+	background-color: #FFBABA;
+	padding: 5px;
+	margin: 0 0 20px 0;
+}
+
+input.error {
+	border: 1px solid #D8000C;
+	background-color: #FFBABA;
+	padding: 2px 5px 2px 4px;
+	margin: 0;
+}
+
+label.error {
+	color: #D8000C;
+	margin: 2px 0 0 135px;
+	width: 300px !important;
+	font-size: 10px;	
+}
+
+a {
+	
+	color: #333333;	
+}
+
+#messagebody {
+	padding: 20px 10px 20px 10px;
+	float: left;
+}
+
+#messagebody a {
+	text-decoration: underline;
+	font-weight: bold; 
+}
+
+#login-area {
+	float: left;
+	min-height: 500px;
+	width: 445px;
+}
+
+#register-area {
+	margin-left: 450px;
+}
+
+#register-area a {
+	text-decoration: underline;
+}
+
+#login-area .userForms {    
+    min-height: 300px;	
+}
+
+#login-providers-list {
+	border-right: 1px solid #666666;
+	padding: 0 0 30px 40px;
+}
+
+#login-normal {
+	border-right: 1px solid #666666;	
+}
+
+.userForms {
+    margin: 0 0 20px 30px;
+    padding-right: 20px;    
+}
+
+.registerInputs {
+	width: 265px;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    font-size: 14px;
+}
+
+.fieldcontain {	
+	height: 50px;
+}
+
+input {
+	background-color: #CCCCCC;
+	border: 0;
+	padding: 3px 5px 3px 5px;
+}
+
+textarea {
+	background-color: #DDDDDD;
+	border: 1px solid #ABABAB;
+	padding: 3px 5px 3px 5px;
+	width: 685px;	
+}
+
+.button {	
+	padding: 10px 15px 10px 15px;
+	background-color: #FDD60F;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: bold;
+	text-transform: uppercase;
+	margin-top: 12px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#facebook_user_profile {
+	padding: 0 0 20px 10px;
+	overflow: auto;
+}
+
+#facebook_user_profile .warning {
+	float: left;
+}
+
+.warning {
+	float: right;
+	color: #FFFFFF;
+    background-color: #EE4444;	
+}
+
+.warning:hover {
+	background-color: #FF0000 !important;
+}
+
+.button:hover {
+	background-color: #FCBD0F;
+}
+
+#container {
+	background-color: #FFFFFF;
+	width: 970px;
+	margin: auto;
+	padding: 27px 25px 30px 25px;
+}
+
+#header {
+	overflow: auto;
+	border-bottom: 1px solid #666666;
+	padding-bottom: 18px;
+}
+
+#menu {
+	float: left;
+}
+
+#menu ul{
+	list-style:none;
+	padding:0 0 0 25px;
+	margin: 70px 0 0 0;
+	display:block;	
+}
+
+#menu ul li {
+	background-image: none;
+	list-style:none;
+	display:inline;
+	float:left;
+	width:auto;
+	padding: 0; 
+	font-size:16px;
+	line-height:29px;
+	margin: 0 40px 0 0;
+	text-transform: uppercase;
+	font-weight: bold;  
+}
+
+#menu ul li a {
+	text-decoration: none;
+	color: #707070;
+}
+
+#menu ul li:hover {
+	border-bottom: 6px solid #FDD60F;	
+}
+
+#menu ul li.current{
+	border-bottom: 6px solid #FDD60F;
+}
+
+#userbox {
+	float: right;
+	height: 86px;
+	width: 230px;
+	padding: 10px;	
+	border-left: 1px solid #666666;
+	text-align: center;	
+}
+
+#userbox a {
+	text-decoration: none;
+}
+
+#logo {
+	background-color: #FDD60F;
+	font-size: 30px;
+	font-weight: bold;
+	float: left;
+	width: 210px;
+	height: 85px;
+	padding: 20px 0 0 0;
+	text-align: center;
+}
+
+#content {
+	color: #333333;
+	overflow: auto;
+	padding-top: 25px;
+}
+
+#content h2 {
+	margin-top: 0;
+}
+
+#current_meeting h1 {
+	padding: 0;
+	margin: 0;
+	font-size: 36px;
+	text-transform: uppercase;
+}
+
+#current_meeting {
+	font-size: 12px;
+	overflow: auto;
+	padding-bottom: 25px;
+	border-bottom: 1px solid #666666;
+}
+
+#current_meeting_main {
+	float: left;
+	width: 540px;
+}
+
+#current_meeting_footer {
+	margin-top: 30px;
+	text-align: right;
+}
+
+#current_meeting_main p {
+	line-height: 20px;
+}
+
+#current_meeting_name {
+	margin-top: 20px;
+	font-size: 24px;
+	font-style: italic;
+	height: 50px;
+}
+
+#current_meeting_points {
+	padding: 25px 20px 15px 20px;
+	float: right;
+	background-color: #FEEF9F;
+	width: 369px;	
+}
+
+#current_meeting_points .meeting_point {
+	margin-bottom: 10px;
+}	
+
+#current_meeting_points h2 {
+	text-transform: uppercase;
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
+.meeting_point {
+	margin-bottom: 0px;
+}
+
+.meeting_point_results {
+	font-weight: bold;
+	color: #000000;
+	float: left;
+    margin-right: 10px;
+    width: 50px;
+}
+
+.meeting_point .vote {
+	text-align: right;
+	margin-bottom: 2px;
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.up {
+	background-image: url("../../images/main/vote_up.png");
+}
+
+.down {
+	background-image: url("../../images/main/vote_down.png");
+}
+
+.abstention{
+	background-image: url("../../images/main/vote_abstention.png");
+}
+
+.up_on {
+	background-image: url("../../images/main/vote_up_on.png");
+}
+
+.down_on {
+	background-image: url("../../images/main/vote_down_on.png");
+}
+
+.meeting_point_text {
+	margin-left: 60px;
+	line-height: 18px;
+}
+
+.date {
+	background-color: #FDD60F;
+	padding: 5px 10px 5px 10px;
+	font-style: normal;		
+	font-weight: bold;
+	margin-right: 10px;
+	text-transform: uppercase;
+}
+
+#last_meetings {
+	margin: 20px 0 15px 0;
+	overflow: auto;
+}
+
+#last_meetings a:hover {
+	text-decoration: underline;
+}
+
+.last_meeting_block {
+	background-color: #FFF7CF;
+	width: 276px;	
+	float: left;
+	margin: 0;	
+	padding: 25px 20px 25px 20px;
+}
+
+.block_0 {
+	margin-right: 10px;
+}
+
+.block_1 {
+	margin-right: 10px;
+}
+
+.last_meeting_block h2 {	
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.last_meeting_block .meeting_point {
+	margin-top: 15px;
+	font-size: 12px;
+}
+
+.last_meeting_block .meeting_point .vote {
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.last_meeting_footer {
+	margin-top: 25px;
+	text-align: center;
+}
+
+#footer {
+	padding-top: 10px;
+	border-top: 1px solid #666666;
+	color: #C9C9C9;
+	font-size: 12px;
+	text-align: center; 
+}
+
+#footer a {
+	color: #C9C9C9;
+	text-decoration: underline;
+}
+
+#meetings-box {
+	float:left;
+	padding-right: 20px;
+	width: 699px;
+	margin-bottom: 20px;
+	font-size: 12px;
+}
+
+.meeting {
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
+.meeting #tc_tagcloud {
+	padding: 10px 20px 10px 20px;	
+}
+
+.meeting #tc_tagcloud a {
+	font-weight: normal;
+}
+
+.meeting-name {	
+	border-bottom: 2px solid #FDD60F;
+	height: 24px;
+	font-size: 16px;		
+}
+
+.party-name {
+	border-bottom: 2px solid #FDD60F;
+	height: 28px;
+	text-transform: uppercase;
+}
+
+.image {
+	background-color: #FDD60F;
+	padding: 15px 10px 0px 10px;
+	font-style: normal;		
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.meeting_item {
+	margin-bottom: 30px;
+}
+
+.meeting a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #707070;
+}
+
+.meeting p {
+	padding: 10px 0 0 10px;
+	margin: 0;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 20px;
+}
+
+#box-area {
+    border-left: 1px solid #666666;
+    margin: 0 0 10px 719px;
+    padding: 0 0 1px 11px;
+}
+
+.box-a {
+	width: 198px;	
+	margin-bottom: 15px;
+	background-color: #FEEF9F;
+	padding: 10px 15px 10px 15px;
+}
+
+.box-a a:hover {
+	text-decoration: underline;
+}
+
+.box-a h3 {
+	margin: 0;
+	padding: 0;
+}
+
+.box-a ul {
+	margin: 0;
+	padding: 0;	
+}
+
+.box-a li {
+	font-size: 10px;
+    margin: auto;
+    min-height: 25px;
+}
+
+.box-a img {
+	float: left;
+	margin-right: 10px;
+}
+
+.box-b {
+	width: 208px;
+	min-height: 200px;
+	margin-bottom: 15px;
+	background-color: #FFF7CF;
+    padding: 5px 10px;	
+}
+
+#subjects-relevant-list {
+	font-size: 12px;
+	margin: 0 20px 20px 20px;
+	background-color: #F6F6F6;
+	padding: 0 0 5px 0;
+}
+
+#subjects-relevant-list h2 {
+	background-color: #FDD60F;
+	padding: 7px 0 7px 12px;
+	margin: 0;
+	font-size: 14px;
+}
+
+#subjects-list {
+	font-size: 12px;
+	margin: 0 20px 0 20px;
+}
+
+#subjects-list .meeting_point {	
+	padding: 10px 20px 10px 20px;
+}
+
+#meetings_box #subjects-list {
+	background-color: #FEEF9F;
+}
+
+.meeting_point_area {
+	background-color: #FEEF9F;
+}
+
+.meeting_point_official_results {
+	background-color: #FFF7CF;
+	padding: 5px 10px 5px 10px;	
+	overflow: auto;
+}
+
+.meeting_point_official_results:hover {
+	background-color: #FFFAE5;
+}
+
+.show_thumbs {
+	padding: 0px 10px 0px 20px;
+	margin: 5px 0 0 20px;
+}
+
+.meeting_point_official_results .results_title {	
+	background-repeat: no-repeat;
+	background-position: right;	
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.meeting_point_official_results .show {
+	background-image: url("../../images/main/down_arrow.png");	
+}
+
+.meeting_point_official_results .hide {
+	background-image: url("../../images/main/up_arrow.png");
+}
+
+#meetings-box .meeting_point {
+	overflow: auto;
+	padding: 10px;
+}
+
+#meetings-box .meeting_point_results a {
+	text-decoration: none;
+}
+
+#meetings-box .meeting_point_results {
+	padding: 5px 10px 5px 0px;
+	width: 50px;
+}
+
+#meetings-box .meeting_point_text {
+	padding: 5px;
+	font-size: 14px;		
+	margin-left: 65px;
+}
+
+#subject_comments {
+	font-size: 12px;
+}
+
+h3{
+	font-size: 16px;
+	border-bottom: 6px solid #FEEF9F;
+}
+
+.show_results {
+	display: none;
+}
+
+.meeting_point_area_buttons {
+	padding: 10px 10px 0 0;	
+	text-align: right;
+	height: 25px;
+	background-color: #FEEF9F;
+	border-top: 1px dotted #FDD60F;
+	margin-left: 60px;
+}
+
+.meeting_point_area_buttons .button {
+	font-size: 11px;
+	padding: 5px 10px 5px 10px;
+}
+
+#subject_comments_form form {
+	text-align: right;
+}
+
+.user_comment {		
+	border-bottom: 1px solid #FEEF9F;	
+}
+
+.user_comment p {
+	padding: 5px 10px 0px 10px;
+}
+
+.user_comment_info {
+	text-align: right;
+	background-color: #FFF7CF;
+	padding: 5px 10px 0px 10px;
+}
+
+#overlay { 
+    display:none; 
+    position:absolute; 
+    background:#EFEFEF; 
+}
+
+#img-load { 
+    position:absolute; 
+}
+
+.meeting_point_tags {
+	color: #444444;
+	font-size: 10px;
+	margin-left: 12px;
+	float:left;
+}
+
+.meeting_point_tags a:hover {
+	text-decoration: underline;
+}
+
+.subject-item-list {
+	margin-bottom: 30px;
+}
+
+#faq-box {
+	float:left;
+	width: 699px;	
+}
+
+#faq-box h2 {
+	font-size: 40px;
+	text-transform: uppercase;
+}
+
+#faq-box h3 {
+	font-size: 18px;
+	font-weight: normal;
+	border: none;
+	padding: 0;
+	margin: 0;
+	background-repeat: no-repeat;
+	background-position: right;	
+}
+
+#faq-box .open {
+	background-image: url("../../images/main/down_arrow.png");
+}
+
+#faq-box .close {
+	background-image: url("../../images/main/up_arrow.png");
+}	
+
+
+#faq-box p {
+	font-size: 12px;
+	line-height: 20px;
+	text-align: justify;	
+}
+
+.faq-item {
+	margin-bottom: 10px;
+}
+
+.faq-item .show {
+	cursor: pointer;	
+	background-color: #F6F6F6;
+	padding: 10px 40px 10px 20px;	
+}
+
+.faq-item .show:hover {
+	background-color: #DDDDDD;
+}
+
+#ajax-fc-content li {
+	background-image: none;
+}
+
+#ajax-fc-task li {
+    padding: 0;
+}
+
+#last_meetings h2 {
+	margin-bottom: 10px;
+}
+
+#last_meetings ul {
+	margin: 0;
+	padding: 0;
+}
+
+#last_meetings li {
+	margin: auto;
+	min-height: 25px;
+}
+
+#last_meetings img {
+	float: left;
+	margin-right: 10px;
+}
+
+.officialLinks {	
+	margin: 0;
+	padding-left: 30px;
+}
+
+.officialLinks a {
+	color: #333333;
+	font-weight: normal;
+}
+
+.officialLinks a:hover {
+	text-decoration: underline;
+}
+
+#notloggedin a {
+	text-decoration: underline;
+}
+
+
+.party_info_block {
+    background-color: #FFF7CF;
+    float: left;
+    margin: 0 10px 0 0;
+    padding: 25px 20px;
+    width: 299px;
+}
+
+.party_info_block h2 {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+#termsconditions ul li {
+    margin-bottom: 15px;
+    padding: 0 0 0 15px;	
+}
+
+#notloggedin_title {
+	font-weight: bold;
+}
+
+#faq-box ul {
+	margin: 25px 0 25px 0;
+}
+
+#faq-box ul li {
+	padding: 0 0 0 15px;
+}
+
+.faq-text {
+	padding: 0 20px 0 20px;
+}
