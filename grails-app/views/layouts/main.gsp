@@ -68,7 +68,7 @@
 			<g:if test="${params.action!='home' && params.action!='profile' && params.action!='auth' && params.action!='signup' && params.action!='register'}">
 				<div id="box-area">
 					<div class="box-a">
-						<h3>Partits</h3>
+						<h3><g:message code="party.title" /></h3>
 						<op:parties />
 					</div>
 					<div class="box-b">

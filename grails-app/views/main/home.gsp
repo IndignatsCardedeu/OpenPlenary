@@ -7,23 +7,27 @@
 	<body>	
 		<div id="current_meeting">
 			<div id="current_meeting_main">
-				<h1><g:link action="session" id="${currentMeeting.id}"><g:message code="meeting.next"/></g:link></h1>
+				<h1>
+					<g:link action="session" id="${currentMeeting.id}">
+						<g:if test="${currentMeeting.startDate<new Date()}">
+							<g:message code="meeting.last"/>
+						</g:if>
+						<g:else>
+							<g:message code="meeting.next"/>
+						</g:else>
+					</g:link>
+				</h1>
 				<div id="current_meeting_name">
 					<span class="date"><g:formatDate date="${currentMeeting.startDate}" format="dd/MM" /></span>
 					<g:link action="session" id="${currentMeeting.id}"> "${currentMeeting.name}"</g:link>
 				</div>
 				<p>${currentMeeting.description}</p>
-				<tc:tagCloud tags="${currentMeetingTags}" controller="tag" action="session" id="${currentMeeting.id}" paramName="tag"/>				
-				<ul class="officialLinks">
-					<g:if test="${currentMeeting.officialAgendaUrl}">
-						<li><a href="${currentMeeting.officialAgendaUrl}">Ordre del dia oficial</a></li>
-					</g:if>
+				<tc:tagCloud tags="${currentMeetingTags}" controller="tag" action="session" id="${currentMeeting.id}" paramName="tag"/>					
+				<div id="current_meeting_footer">
 					<g:if test="${currentMeeting.officialMinutesUrl}">
-						<li><a href="${currentMeeting.officialMinutesUrl}">Acta oficial</a></li>
+						<a href="${currentMeeting.officialMinutesUrl}" class="button"><g:message code="meeting.minutes"/></a>
 					</g:if>
-				</ul>				
-				<div id="current_meeting_footer">				
-					<g:link action="session" id="${currentMeeting.id}" class="button"><g:message code="meeting.moreInfo"/></g:link>
+					<g:link action="session" id="${currentMeeting.id}" class="button"><g:message code="meeting.viewAll"/></g:link>
 				</div>
 			</div>
 			<div id="current_meeting_points">
@@ -31,9 +35,9 @@
 				<g:each in="${relevants}" status="i" var="subject">
 				<div class="meeting_point">
 					<div class="meeting_point_results">
-						<g:remoteLink controller="main" action="voteUp" id="${subject.id}" onSuccess="addVote(data, '#thumbsUp_${subject.id}');">
+						<g:remoteLink controller="main" action="voteUp" id="${subject.id}" onSuccess="addVote(data, ${subject.id});">
 							<div id="thumbsUp_${subject.id}" class="vote
-								<g:if test="${subject.getUserVote(sec.loggedInUserInfo(field:'id').toString())>0}"> 
+								<g:if test="${subject.getUserVote(sec.loggedInUserInfo(field:'id').toString(), request.getRemoteAddr(), request.getHeader('User-Agent'))>0}"> 
 									up_on
 								</g:if>
 								<g:else>
@@ -41,9 +45,9 @@
 								</g:else>
 							">${subject.getThumbsUp()}</div>
 						</g:remoteLink>
-						<g:remoteLink controller="main" action="voteDown" id="${subject.id}" onSuccess="addVote(data, '#thumbsDown_${subject.id}');">
+						<g:remoteLink controller="main" action="voteDown" id="${subject.id}" onSuccess="addVote(data, ${subject.id});">
 							<div id="thumbsDown_${subject.id}" class="vote 
-								<g:if test="${subject.getUserVote(sec.loggedInUserInfo(field:'id').toString())<0}"> 
+								<g:if test="${subject.getUserVote(sec.loggedInUserInfo(field:'id').toString(), request.getRemoteAddr(), request.getHeader('User-Agent'))<0}"> 
 									down_on
 								</g:if>
 								<g:else>
@@ -51,6 +55,14 @@
 								</g:else>
 							">${subject.getThumbsDown()}</div>
 						</g:remoteLink>
+						<div id="voteText_${subject.id}" class="meeting_point_vote_text">
+							<g:if test="${subject.getUserVote(sec.loggedInUserInfo(field:'id').toString(), request.getRemoteAddr(), request.getHeader('User-Agent'))==0}">
+								<g:message code="main.user.vote"/>
+							</g:if>
+							<g:else>
+								<g:message code="main.user.vote.ok"/>
+							</g:else>
+						</div>
 					</div>		
 					<div class="meeting_point_text">
 						<strong><g:link controller="main" action="point" id="${subject.id}">${subject.name}.</g:link></strong> <op:truncate text="${subject.description}" length="200"/>

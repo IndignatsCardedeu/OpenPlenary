@@ -14,8 +14,9 @@ class WebUserController {
 
     def signup() {
 		def config = SpringSecurityUtils.securityConfig
+		def terms = Content.findByKeyname("TERMS")
 		String postUrl = "${request.contextPath}${config.apf.filterProcessesUrl}"
-		[userInstance: new User(params), postUrl: postUrl]
+		[userInstance: new User(params), postUrl: postUrl, terms: terms]
 	}
 		
 	@Secured(['ROLE_USER','ROLE_ADMIN'])

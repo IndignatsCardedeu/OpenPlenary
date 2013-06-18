@@ -29,9 +29,8 @@ class CustomTagLib {
 	}
 	
 	def page = { attrs ->
-		def language = org.springframework.web.servlet.support.RequestContextUtils.getLocale(request).language
-		def page = attrs.code
-		out << render(template:"/main/includes/" + page + "/" + language)
+		def content = Content.findByKeyname(attrs.keyname)
+		out << render(template:"/main/includes/content", model: [content: content])
 	}
 	
 }

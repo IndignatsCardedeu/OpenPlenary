@@ -303,6 +303,7 @@ textarea {
 
 #current_meeting_points .meeting_point {
 	margin-bottom: 10px;
+	overflow: auto;
 }	
 
 #current_meeting_points h2 {
@@ -321,6 +322,27 @@ textarea {
 	float: left;
     margin-right: 10px;
     width: 50px;
+    border: 1px solid #FCBD0F;
+    background-color: #FDD60F;
+    padding: 3px;
+}
+
+.meeting_point_party_results {
+	font-weight: bold;
+	color: #000000;
+	float: left;
+    margin-right: 10px;
+    width: 50px;
+    padding: 3px;	
+}
+
+.meeting_point_vote_text {
+	text-align: center;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin-top: 3px;
+	color: #444444;
+	background-color: #FCBD0F;
 }
 
 .meeting_point .vote {
@@ -352,7 +374,7 @@ textarea {
 }
 
 .meeting_point_text {
-	margin-left: 60px;
+	margin-left: 68px;
 	line-height: 18px;
 }
 
@@ -436,6 +458,10 @@ textarea {
 .meeting {
 	margin-bottom: 10px;
 	font-size: 16px;
+}
+
+.meeting_icons {
+	float: right;
 }
 
 .meeting #tc_tagcloud {
@@ -559,6 +585,7 @@ textarea {
 
 .meeting_point_area {
 	background-color: #FEEF9F;
+	min-height: 70px;
 }
 
 .meeting_point_official_results {
@@ -602,15 +629,20 @@ textarea {
 	text-decoration: none;
 }
 
+.meeting_point_official_results .show_thumbs .meeting_point_results {
+	margin: 0;
+	background-color: none;
+	border: none;
+}
+
 #meetings-box .meeting_point_results {
-	padding: 5px 10px 5px 0px;
-	width: 50px;
+	margin: 5px 0 0 5px;
 }
 
 #meetings-box .meeting_point_text {
 	padding: 5px;
 	font-size: 14px;		
-	margin-left: 65px;
+	margin-left: 70px;
 }
 
 #subject_comments {
@@ -632,7 +664,7 @@ h3{
 	height: 25px;
 	background-color: #FEEF9F;
 	border-top: 1px dotted #FDD60F;
-	margin-left: 60px;
+	margin-left: 70px;
 }
 
 .meeting_point_area_buttons .button {

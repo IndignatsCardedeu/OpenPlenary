@@ -29,9 +29,9 @@
 					<div class="meeting_point">			    	
 				    	<div class="meeting_point_area">
 							<div class="meeting_point_results">
-								<g:remoteLink controller="main" action="voteUp" id="${item.id}" onSuccess="addVote(data, '#thumbsUp_${item.id}');">
+								<g:remoteLink controller="main" action="voteUp" id="${item.id}" onSuccess="addVote(data, ${item.id});">
 									<div id="thumbsUp_${item.id}" class="vote 
-										<g:if test="${item.getUserVote(sec.loggedInUserInfo(field:'id').toString())>0}"> 
+										<g:if test="${item.getUserVote(sec.loggedInUserInfo(field:'id').toString(), request.getRemoteAddr(), request.getHeader('User-Agent'))>0}"> 
 											up_on
 										</g:if>
 										<g:else>
@@ -39,9 +39,9 @@
 										</g:else>
 									">${item.getThumbsUp()}</div>
 								</g:remoteLink>
-								<g:remoteLink controller="main" action="voteDown" id="${item.id}" onSuccess="addVote(data, '#thumbsDown_${item.id}');">
+								<g:remoteLink controller="main" action="voteDown" id="${item.id}" onSuccess="addVote(data, ${item.id});">
 									<div id="thumbsDown_${item.id}" class="vote
-										<g:if test="${item.getUserVote(sec.loggedInUserInfo(field:'id').toString())<0}"> 
+										<g:if test="${item.getUserVote(sec.loggedInUserInfo(field:'id').toString(), request.getRemoteAddr(), request.getHeader('User-Agent'))<0}"> 
 											down_on
 										</g:if>
 										<g:else>
@@ -49,6 +49,14 @@
 										</g:else>
 									">${item.getThumbsDown()}</div>
 								</g:remoteLink>
+								<div id="voteText_${item.id}" class="meeting_point_vote_text">
+									<g:if test="${item.getUserVote(sec.loggedInUserInfo(field:'id').toString(), request.getRemoteAddr(), request.getHeader('User-Agent'))==0}">
+										<g:message code="main.user.vote"/>
+									</g:if>
+									<g:else>
+										<g:message code="main.user.vote.ok"/>
+									</g:else>
+								</div>
 							</div>		
 							<div class="meeting_point_text">
 								<strong><g:link controller="main" action="point" id="${item.id}">${item.name}.</g:link></strong> <op:truncate text="${item.description}" length="200"/>
@@ -69,7 +77,7 @@
 								<div id="politicians_${item.id}" class="show_results">
 									<g:if test="${item.getPartyThumbsUp()>0}">
 									<div class="show_thumbs">
-										<div class="meeting_point_results">
+										<div class="meeting_point_party_results">
 											<div class="vote up">${item.getPartyThumbsUp()}</div>										
 										</div>		
 										<g:each in="${item.getPartyThumbsUpList()}" status="j" var="vote">					
@@ -79,7 +87,7 @@
 									</g:if>
 									<g:if test="${item.getPartyThumbsDown()>0}">
 									<div class="show_thumbs">
-										<div class="meeting_point_results">										
+										<div class="meeting_point_party_results">										
 											<div class="vote down">${item.getPartyThumbsDown()}</div>
 										</div>								
 										<g:each in="${item.getPartyThumbsDownList()}" status="j" var="vote">					
@@ -89,7 +97,7 @@
 									</g:if>
 									<g:if test="${item.getPartyAbstention()>0}">
 									<div class="show_thumbs">
-										<div class="meeting_point_results">										
+										<div class="meeting_point_party_results">										
 											<div class="vote abstention">${item.getPartyAbstention()}</div>
 										</div>								
 										<g:each in="${item.getAbstentionList()}" status="j" var="vote">					

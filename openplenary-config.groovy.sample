@@ -3,6 +3,8 @@ println("Loading custom properties...")
 
 grails.serverURL = "http://yourdomain:8080/${appName}"
 
+grails.openplenary.defaultLocale = new Locale("ca","ES")
+
 dataSource {
 	pooled = true
 	driverClassName = "com.mysql.jdbc.Driver"

@@ -156,7 +156,7 @@
 		</div>
 		<div style='display:none'>
 			<div id='termsconditions' style='padding:10px; background:#fff;'>
-				<op:page code="terms"/>
+				<op:page keyname="TERMS"/>
 			</div>			
 		</div>
 	</body>

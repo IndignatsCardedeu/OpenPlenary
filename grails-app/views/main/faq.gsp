@@ -21,8 +21,17 @@
 	</head>
 	<body>		
 		<div id="faq-box">
-			<h2>Preguntes més freqüents</h2>
-			<op:page code="faq" />
+			<h2><g:message code="faq.title" /></h2>
+			<g:each in="${questions}" status="index" var="faq">
+				<div class="faq-item">
+					<div class="show faq-header">
+						<h3 class="open">${faq.question}</h3>
+					</div>
+					<div class="show_results faq-text">
+						${faq.answer}
+					</div>
+				</div>			
+			</g:each>
 		</div>			
 	</body>
 </html>

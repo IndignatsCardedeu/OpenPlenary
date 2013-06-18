@@ -8,18 +8,23 @@ if (typeof jQuery !== 'undefined') {
 	})(jQuery);
 }
 
-function addVote(data, block){	
+function addVote(data, sid){	
 	if (data.code=="OK"){
+		var block = ""
+		if (data.vote==1) {
+			block = "#thumbsUp_" + sid;
+			$(block).addClass("up_on");
+			$(block).removeClass("up");			
+		}else {
+			block = "#thumbsDown_" + sid;
+			$(block).addClass("down_on");
+			$(block).removeClass("down");				
+		}
+		
 		var vote = parseInt($(block).html());
 		$(block).html(vote+1);
+		$("#voteText_" + sid).html(data.code)
 
-		if (data.vote==1){
-			$(block).addClass("up_on");
-			$(block).removeClass("up");
-		}else{
-			$(block).addClass("down_on");
-			$(block).removeClass("down");			
-		}
 	}else{
 		if (data.code!="error"){
 			$("#notloggedin_title").html(data.title);

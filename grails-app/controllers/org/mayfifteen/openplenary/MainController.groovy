@@ -35,11 +35,13 @@ class MainController {
 	}
 	
 	def faq(){
-		
+		def language = org.springframework.web.servlet.support.RequestContextUtils.getLocale(request).language
+		[ questions: FAQ.findAllByLanguage(language, [sort: "position"])]
 	}
 	
 	def contact(){
-	
+		def contact = Content.findByKeyname("CONTACT")
+		render(view: "content", model: [content: contact])
 	}
 	
 	def party(){
@@ -223,12 +225,23 @@ class MainController {
 	}
 	
 	private List getRelevants(def subjects){
-		def relevants = null
+		def relevants = null		
 		
 		if (subjects){
+			def selected = subjects.findAll{ it.relevant }
 			relevants = subjects.findAll{ it.votes && it.votes.size()>0 }.sort{ it.votes.size() }.reverse()
-			if (!relevants) relevants = subjects.asList()
-			if (relevants.size()>3) relevants = relevants.subList(0,3)
+			if (!relevants && !selected) {
+				relevants = subjects.asList()
+				if (relevants.size()>3) {
+					relevants = relevants.subList(0,3)
+				}
+			}else if (relevants.size()>3){
+				relevants = relevants.subList(0,3)
+			}else if (relevants.size()<3 && selected && selected.size()>=3){
+				relevants.addAll(selected.asList().minus(relevants).subList(0,(3-relevants.size())))
+			}else if (relevants.size()<3 && subjects.size()>=3){
+				relevants.addAll(subjects.asList().minus(relevants).subList(0,(3-relevants.size())))
+			}				
 		}
 		
 		return relevants

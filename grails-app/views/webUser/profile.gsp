@@ -91,7 +91,11 @@
 		</sec:ifNotGranted>
 	<div style='display:none'>
 		<div id='unsubscribe' style='padding:10px; background:#fff;'>
-			<op:page code="unsubscribe" />
+			<p><strong><g:message code="main.app.warning" /></strong></p>
+			<g:message code="user.unsubscribe.text" />
+			<g:link controller="webUser" action="delete" class="button warning">
+				<g:message code="user.unsubscribe.linkText" />
+			</g:link>
 		</div>
 	</div>	
 	</body>

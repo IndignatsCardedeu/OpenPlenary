@@ -1,6 +1,7 @@
 package org.mayfifteen.openplenary
 
 import org.grails.taggable.Taggable
+import org.mayfifteen.openplenary.utils.StringUtils
 
 class Subject implements Taggable {
 	
@@ -20,13 +21,18 @@ class Subject implements Taggable {
 		comments sort: "dateCreated"
 	}
 	
-	int getUserVote(String id){		
-		int res = 0;
+	int getUserVote(String id, String remoteAddr, String userAgent){		
+		int res = 0
+		def aux = null
 				
 		if (id) {
-			def aux = votes.find { it.user!=null && it.user.id == id.toLong() }
-			if (aux) res = aux.vote
-		}		
+			aux = votes.find { it.user!=null && it.user.id == id.toLong() }			
+		}else{
+			def hash = StringUtils.generateMD5( remoteAddr + "_" + userAgent )
+			aux = votes.find { it.user==null && it.hash == hash }			
+		}	
+		
+		if (aux) res = aux.vote
 		
 		return res
 	}

@@ -124,3 +124,4 @@ grails.openplenary.layout = 'main'
 grails.openplenary.name = 'Foo'
 grails.openplenary.voting.allowAnonymous = false
 grails.openplenary.voting.maxAnonymousVotes = 5
+grails.openplenary.defaultLocale = new Locale("en","EN") 

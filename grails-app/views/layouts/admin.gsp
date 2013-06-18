@@ -331,7 +331,86 @@
 				</div>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
 			</li>
-		</ul>
+		</ul>		
+		
+		<div class="nav-divider">&nbsp;</div>
+		
+		<ul
+			<g:if test="${params.controller=='FAQ'}">
+				class="current"
+			</g:if>		 
+			<g:else>
+				class="select"
+			</g:else>		
+		>
+			<li>
+				<g:link controller="FAQ"><b><g:message code="admin.menu.faq" /></b><!--[if IE 7]><!--></g:link><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub
+					<g:if test="${params.controller=='FAQ'}">
+						show
+					</g:if>		 				 
+				">
+					<ul class="sub">
+						<li
+							<g:if test="${params.controller=='FAQ' && params.action=='list'}">
+								class="sub_show"
+							</g:if>
+						>
+							<g:link controller="FAQ"><g:message code="admin.faq.list" /></g:link>
+						</li>
+						<li
+							<g:if test="${params.controller=='FAQ' && params.action=='create'}">
+								class="sub_show"
+							</g:if>				
+						>
+							<g:link controller="FAQ" action="create"><g:message code="admin.faq.create" /></g:link>
+						</li>
+					</ul>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+		</ul>		
+		
+		<div class="nav-divider">&nbsp;</div>
+		
+		<ul
+			<g:if test="${params.controller=='content'}">
+				class="current"
+			</g:if>		 
+			<g:else>
+				class="select"
+			</g:else>		
+		>
+			<li>
+				<g:link controller="Content"><b><g:message code="admin.menu.content" /></b><!--[if IE 7]><!--></g:link><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub
+					<g:if test="${params.controller=='content'}">
+						show
+					</g:if>		 				 
+				">
+					<ul class="sub">
+						<li
+							<g:if test="${params.controller=='content' && params.action=='list'}">
+								class="sub_show"
+							</g:if>
+						>
+							<g:link controller="Content"><g:message code="admin.content.list" /></g:link>
+						</li>
+						<li
+							<g:if test="${params.controller=='content' && params.action=='create'}">
+								class="sub_show"
+							</g:if>				
+						>
+							<g:link controller="Content" action="create"><g:message code="admin.content.create" /></g:link>
+						</li>
+					</ul>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+		</ul>		
+		
 		
 		<div class="clear"></div>
 		</div>
