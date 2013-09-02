@@ -22,6 +22,18 @@
 	</div>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: subjectInstance, field: 'agreements', 'error')} ">
+	<label for="agreements">
+		<g:message code="admin.subject.agreements.label" default="Agreements" />
+		
+	</label>
+	<div class="formfield">
+		<ckeditor:editor name="agreements" height="400px" width="700px">
+		${subjectInstance?.agreements}
+		</ckeditor:editor>		
+	</div>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: subjectInstance, field: 'tags', 'error')} ">
 	<label for="tags">
 		<g:message code="admin.subject.tags.label" default="Tags" />		

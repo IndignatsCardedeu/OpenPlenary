@@ -6,6 +6,10 @@ body {
 	
 }
 
+a img {
+	border: 0;
+}
+
 a {
 	text-decoration: none;
 }
@@ -131,6 +135,10 @@ input {
 	border: 0;
 	padding: 3px 5px 3px 5px;
 }
+
+input[type=checkbox] {
+  background-color: transparent;
+} 
 
 textarea {
 	background-color: #DDDDDD;
@@ -376,6 +384,10 @@ textarea {
 .meeting_point_text {
 	margin-left: 68px;
 	line-height: 18px;
+}
+
+.meeting_point_text ul li {
+	padding: 0 0 0 12px;
 }
 
 .date {
@@ -844,4 +856,46 @@ h3{
 
 .faq-text {
 	padding: 0 20px 0 20px;
+}
+
+#pagebrowser {
+	margin-left: 5px;
+	padding: 10px;
+	border: 1px solid #FDD60F;
+	background-color: #FFF7CF;
+	text-align: right;
+}
+
+#pagebrowser a {
+	border: 1px solid #FDD60F;
+	padding: 3px 5px 3px 5px;
+	margin-right: 3px;	
+	background-color: #FDD60F;
+}
+
+#pagebrowser a:hover {
+	background-color: #FCBD0F;
+}
+
+#pagebrowser .currentStep {
+	border: 1px solid #FDD60F;	
+	padding: 3px 5px 3px 5px;
+	margin-right: 3px;	
+	background-color: #FFFFFF;
+}
+
+.read-more a, .read-less a{
+	display: block;
+	border: 1px solid #FDD60F;
+	background-color: #FFF7CF;
+	padding: 3px 10px 3px 5px;
+	text-align: right;
+	margin-top: 10px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.read-more a:hover, .read-less a:hover {
+	background-color: #FFFAE5;
+	text-decoration: underline; 
 }

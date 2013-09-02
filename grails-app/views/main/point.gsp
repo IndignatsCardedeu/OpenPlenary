@@ -5,10 +5,10 @@
 		<title> :: ${item.name}</title>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$(".meeting_point_text").expander({
-					slicePoint: 2500,
-					expandText: '<strong>[ <g:message code="main.read.more"/> ]</strong>',
-					userCollapseText: '<strong>[ <g:message code="main.read.less"/> ]</strong>'
+				$(".meeting_point_content").expander({
+					slicePoint: ${grailsApplication.config.grails.openplenary.subject.slicePoint},
+					expandText: '<g:message code="main.read.more"/>',
+					userCollapseText: '<g:message code="main.read.less"/>'
 				});
 				
 				$(".meeting_point_official_results").click(function () {
@@ -64,7 +64,12 @@
 					</div>
 				</div>		
 				<div class="meeting_point_text">
-					<strong>${item.name}.</strong> ${item.description}
+					<div class="meeting_point_content">
+						<strong>${item.name}.</strong> ${item.description}
+					</div>
+					<div class="meeting_point_agreements">
+					 	${item.agreements}
+					</div>
 				</div>		
 				<div class="meeting_point_area_buttons">
 					<div class="meeting_point_tags">

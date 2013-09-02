@@ -10,6 +10,7 @@ class Subject implements Taggable {
 	
 	String name
 	String description
+	String agreements
 	boolean relevant = false
 
     static constraints = {
@@ -18,6 +19,7 @@ class Subject implements Taggable {
 	
 	static mapping = {
 		description type:"text"
+		agreements type:"text"
 		comments sort: "dateCreated"
 	}
 	

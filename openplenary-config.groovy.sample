@@ -34,6 +34,7 @@ grails.openplenary.layout = 'main'
 grails.openplenary.name = 'FooCity'
 grails.openplenary.voting.allowAnonymous = false
 grails.openplenary.voting.maxAnonymousVotes = 5
+grails.openplenary.subject.slicePoint = 1000
 
 grails.plugins.springsecurity.facebook.appId='yourAppId'
 grails.plugins.springsecurity.facebook.secret='yourSecret'

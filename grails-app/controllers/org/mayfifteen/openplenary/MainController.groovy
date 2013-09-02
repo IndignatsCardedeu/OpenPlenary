@@ -142,7 +142,7 @@ class MainController {
 			}
 		}
 		
-		def subjects = meeting.subjects.minus(relevants)
+		def subjects = meeting.subjects.minus(relevants).sort{ it.votes.size() }.reverse()
 		
 		if (meeting.published){		
 			[meeting: meeting, subjects: subjects, relevants: relevants, meetingTags: tags]

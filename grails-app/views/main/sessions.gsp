@@ -17,7 +17,9 @@
 					</p>  
 		    	</div> 			
 			</g:each>
-			<g:paginate total="${meetingsTotal}" />
+			<div id="pagebrowser">
+				<g:paginate total="${meetingsTotal}" />
+			</div>
 		</div>
 	</body>
 </html>

@@ -136,7 +136,7 @@
 				<div class="fieldcontain required">
 
 					<a class="popup" style="font-size:10px;" href="#termsconditions">He llegit i accepto les condicions d'us</a>				
-					<g:checkBox name="terms" class="registerInputs required" />
+					<g:checkBox name="terms" class="required" />
 				</div>						
 				
 				<!-- Begin of captcha -->	

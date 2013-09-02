@@ -27,6 +27,15 @@ class SubjectController {
     def save() {
         def subjectInstance = new Subject(params)
 		subjectInstance.description = StringUtils.textCleaner(subjectInstance.description)
+		subjectInstance.agreements = StringUtils.textCleaner(subjectInstance.agreements)
+		
+		if (subjectInstance.description.contains("#ACTA#")){
+			subjectInstance.description = subjectInstance.description.replaceAll("#ACTA#","<a href='" + subjectInstance.meeting.officialMinutesUrl + "'>" + message(code: 'meeting.minutes.moreInfo') + "</a>")
+		}
+		
+		if (subjectInstance.agreements.contains("#ACTA#")){
+			subjectInstance.agreements = subjectInstance.agreements.replaceAll("#ACTA#","<a href='" + subjectInstance.meeting.officialMinutesUrl + "'>" + message(code: 'meeting.minutes.moreInfo') + "</a>")
+		}
 		
 		Meeting meeting = Meeting.get(params.meeting.id)
 		
@@ -97,6 +106,15 @@ class SubjectController {
 
         subjectInstance.properties = params
 		subjectInstance.description = StringUtils.textCleaner(subjectInstance.description)
+		subjectInstance.agreements = StringUtils.textCleaner(subjectInstance.agreements)
+		
+		if (subjectInstance.description.contains("#ACTA#")){
+			subjectInstance.description = subjectInstance.description.replaceAll("#ACTA#","<a href='" + subjectInstance.meeting.officialMinutesUrl + "'>" + message(code: 'meeting.minutes.moreInfo') + "</a>")
+		}
+	
+		if (subjectInstance.agreements.contains("#ACTA#")){
+			subjectInstance.agreements = subjectInstance.agreements.replaceAll("#ACTA#","<a href='" + subjectInstance.meeting.officialMinutesUrl + "'>" + message(code: 'meeting.minutes.moreInfo') + "</a>")
+		}
 		
 		def tagsList = params.tags.split(",") as List
 		for (int i=0; i<tagsList.size(); i++){
