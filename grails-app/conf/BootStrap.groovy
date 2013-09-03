@@ -149,10 +149,10 @@ class BootStrap {
 					def meeting = new Meeting(name: "Test", description: "Lorem ipsum", startDate: new Date(), endDate: new Date(), published:true, mandate: mandate)
 					meeting.save(failOnError: true)
 					
-					def subject1 = new Subject(name: "Foo", description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla", meeting: meeting)
+					def subject1 = new Subject(name: "Foo", description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla", agreements: "An agreement", meeting: meeting)
 					subject1.save(failOnError: true)
 					
-					def subject2 = new Subject(name: "Bar", description: "ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ", meeting: meeting)
+					def subject2 = new Subject(name: "Bar", description: "ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ble ", agreements: "An agreement", meeting: meeting)
 					subject2.save(failOnError: true)
 				}
 			}
