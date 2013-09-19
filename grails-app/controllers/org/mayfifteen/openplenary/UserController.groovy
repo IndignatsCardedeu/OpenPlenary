@@ -26,7 +26,9 @@ import org.springframework.dao.DataIntegrityViolationException
 @Secured(['ROLE_ADMIN'])
 class UserController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	def springSecurityService
+	
+    static allowedMethods = [save: "POST", update: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -43,6 +45,10 @@ class UserController {
 
     def save() {
         def userInstance = new User(params)
+		
+		if (grailsApplication.config.grails.openplenary.encodeEmail)
+			userInstance.email = springSecurityService.encodePassword(userInstance.email)
+		
         if (!userInstance.save(flush: true)) {
             render(view: "create", model: [userInstance: userInstance])
             return
@@ -92,6 +98,10 @@ class UserController {
                 return
             }
         }
+		
+		if (grailsApplication.config.grails.openplenary.encodeEmail && params.email!=""){
+			params.email = springSecurityService.encodePassword(params.email)
+		}else if (params.email=="") params.email = userInstance.email
 
         userInstance.properties = params
 
@@ -113,11 +123,10 @@ class UserController {
         }
 
         try {
-            userInstance.delete(flush: true)
+            userInstance.delete(flush: true, failOnError: true)
 			flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), params.id])
             redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
+        }catch (DataIntegrityViolationException e) {
 			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), params.id])
             redirect(action: "show", id: params.id)
         }

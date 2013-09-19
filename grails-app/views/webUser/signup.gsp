@@ -105,10 +105,11 @@
 				</ul>
 			</g:hasErrors>
 			<g:form controller="webUser" action="register" name="registerForm" class="userForms">
-				<div class="fieldcontain required">
+				<p class="tip"><g:message code="user.username.tip.label" /></p>		
+				<div class="fieldcontain required">					
 					<label for="username">
 						<g:message code="user.username.label" default="Username" />
-					</label>
+					</label>					
 					<g:textField name="username" value="${userInstance?.username}" class="required registerInputs ${hasErrors(bean: userInstance, field: 'username', 'error')}"/>
 				</div>
 				
@@ -135,7 +136,7 @@
 				
 				<div class="fieldcontain required">
 
-					<a class="popup" style="font-size:10px;" href="#termsconditions">He llegit i accepto les condicions d'us</a>				
+					<a class="popup" style="font-size:10px;" href="#termsconditions"><g:message code="user.signup.terms" /></a>				
 					<g:checkBox name="terms" class="required" />
 				</div>						
 				

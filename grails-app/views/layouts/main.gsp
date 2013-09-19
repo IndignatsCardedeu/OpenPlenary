@@ -65,7 +65,7 @@
 		</div>
 		<div id="content">
 			<g:layoutBody/>	
-			<g:if test="${params.action!='home' && params.action!='profile' && params.action!='auth' && params.action!='signup' && params.action!='register'}">
+			<g:if test="${params.action!='home' && params.action!='profile' && params.action!='auth' && params.action!='signup' && params.action!='register' && params.action!='update'}">
 				<div id="box-area">
 					<div class="box-a">
 						<h3><g:message code="party.title" /></h3>

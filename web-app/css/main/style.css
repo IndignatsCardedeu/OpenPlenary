@@ -130,6 +130,12 @@ label {
 	height: 50px;
 }
 
+.fieldcontain p {
+	font-size: 10px;
+	margin: 5px 0 30px 20px;
+	color: #880000;
+}
+
 input {
 	background-color: #CCCCCC;
 	border: 0;
@@ -898,4 +904,9 @@ h3{
 .read-more a:hover, .read-less a:hover {
 	background-color: #FFFAE5;
 	text-decoration: underline; 
+}
+
+.tip {
+	font-size: 12px;
+	color: #880000;		
 }

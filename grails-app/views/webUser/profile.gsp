@@ -14,7 +14,7 @@
 							equalTo: "#password"
 						},
 						email: {
-							required: true,
+							required: ${!grailsApplication.config.grails.openplenary.encodeEmail},
 							email: true
 						}
 					},
@@ -66,7 +66,13 @@
 					<label for="email">
 						<g:message code="user.email.label" default="Email" class="registerInputs"/>
 					</label>
-					<g:field type="email" name="email" value="${userInstance?.email}" class="registerInputs email required ${hasErrors(bean: userInstance, field: 'email', 'error')}"/>
+					<g:if test="${grailsApplication.config.grails.openplenary.encodeEmail}">
+						<g:field type="email" name="email" class="registerInputs email ${hasErrors(bean: userInstance, field: 'email', 'error')}"/>
+						<p><g:message code="user.emailEncoded.label" /></p>	
+					</g:if>
+					<g:else>
+						<g:field type="email" name="email" value="${userInstance?.email}" class="registerInputs email required ${hasErrors(bean: userInstance, field: 'email', 'error')}"/>
+					</g:else>
 				</div>			
 				
 				<div class="fieldcontain required">

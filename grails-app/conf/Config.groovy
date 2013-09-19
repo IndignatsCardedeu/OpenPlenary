@@ -144,3 +144,4 @@ grails.openplenary.voting.allowAnonymous = false
 grails.openplenary.voting.maxAnonymousVotes = 5
 grails.openplenary.subject.slicePoint = 1000
 grails.openplenary.defaultLocale = new Locale("en","EN") 
+grails.openplenary.encodeEmail = false

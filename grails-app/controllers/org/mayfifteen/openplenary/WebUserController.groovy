@@ -53,6 +53,10 @@ class WebUserController {
 				params.password = user.password
 				params.confirm = user.password
 			}
+				
+			if (grailsApplication.config.grails.openplenary.encodeEmail && params.email!=""){
+				params.email = springSecurityService.encodePassword(params.email)
+			}else if (params.email=="") params.email = user.email
 			
 			user.properties = params
 	
@@ -84,12 +88,18 @@ class WebUserController {
 	}
 	
 	def register(){	
-		def webUser= new User(params)		
+		def webUser= new User(params)
+		
+		String mailTo = params.email
+		
+		if (grailsApplication.config.grails.openplenary.encodeEmail) 
+			webUser.email = springSecurityService.encodePassword(webUser.email)
 		
 		if (simpleCaptchaService.validateCaptcha(params.captcha)){
 			webUser.validate =  UUID.randomUUID().toString()
 	
 			if (!webUser.save(flush:true)) {
+				webUser.email = mailTo
 				render(view: "signup", model: [userInstance: webUser])
 				return
 			}
@@ -99,7 +109,8 @@ class WebUserController {
 			
 			this.mail(
 				message(code:"user.signup.confirmation.mail.subject", args:[grailsApplication.config.grails.openplenary.name]),
-				message(code:"user.signup.confirmation.mail.body", args:[grailsApplication.config.grails.serverURL, webUser.validate]), webUser.email)
+				message(code:"user.signup.confirmation.mail.body", args:[grailsApplication.config.grails.serverURL, webUser.validate]), 
+				mailTo)
 	
 			flash.message = message(code: 'user.created.message', args: [message(code: 'user.label', default: 'User'), webUser.id])
 		}else{		

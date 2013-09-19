@@ -21,6 +21,7 @@ package org.mayfifteen.openplenary
 class User {
 
 	transient springSecurityService
+	def grailsApplication
 
 	Date dateCreated
 	Date lastUpdated
@@ -39,7 +40,7 @@ class User {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
-		email email: true, nullable: true, unique: true
+		email nullable: true, unique: true
 	}
 
 	static mapping = {
@@ -51,7 +52,7 @@ class User {
 	}
 
 	def beforeInsert() {
-		encodePassword()
+		encodePassword()		
 	}
 
 	def beforeUpdate() {
