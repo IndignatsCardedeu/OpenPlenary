@@ -78,7 +78,7 @@
 			</g:if>			
 		</div>
 		<div id="footer">
-			<g:message code="main.copyright"/>
+			<g:link controller="main" action="legal"><g:message code="main.legal"/></g:link> :: <g:message code="main.copyright"/>
 		</div>
 	</div>
 	<div id="overlay">

@@ -62,6 +62,11 @@ class MainController {
 		render(view: "content", model: [content: contact])
 	}
 	
+	def legal(){
+		def terms = Content.findByKeyname("TERMS")
+		render(view: "content", model: [content: terms])
+	}
+	
 	def party(){
 		PoliticalParty party = PoliticalParty.get(params.id)
 
