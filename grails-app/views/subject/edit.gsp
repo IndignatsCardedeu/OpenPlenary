@@ -65,7 +65,7 @@
 										<td>${item.party.id}</td>						
 											
 										<td>
-											<img src="${resource(dir: 'images/parties')}/${item.party.logo}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: item.party.logo)}"/>
 										</td>
 										
 										<td style="text-align:center">

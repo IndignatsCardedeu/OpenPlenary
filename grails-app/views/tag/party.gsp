@@ -24,7 +24,7 @@
 			<div class="meeting"> 		
 				<div class="party-name">
 					<g:link controller="main" action="party" id="${party.id}">
-		    			<span class="image"><img src="${resource(dir: 'images/parties')}/${party.logo}"/></span>
+		    			<span class="image"><img src="${createLink(controller:'files', action:'logo', id: party.logo)}"/></span>
 		    		</g:link>				
 		    		<g:link controller="main" action="party" id="${party.id}">
 		    			${party.name}
@@ -88,7 +88,7 @@
 											<div class="vote up">${item.getPartyThumbsUp()}</div>										
 										</div>		
 										<g:each in="${item.getPartyThumbsUpList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.voteUp} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.voteUp} ${message(code:'meeting.point.votes')}"/>
 										</g:each>							
 									</div>
 									</g:if>
@@ -98,7 +98,7 @@
 											<div class="vote down">${item.getPartyThumbsDown()}</div>
 										</div>								
 										<g:each in="${item.getPartyThumbsDownList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.voteDown} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.voteDown} ${message(code:'meeting.point.votes')}"/>
 										</g:each>									
 									</div>
 									</g:if>
@@ -108,7 +108,7 @@
 											<div class="vote abstention">${item.getPartyAbstention()}</div>
 										</div>								
 										<g:each in="${item.getAbstentionList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.abstention} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.abstention} ${message(code:'meeting.point.votes')}"/>
 										</g:each>									
 									</div>								
 									</g:if>

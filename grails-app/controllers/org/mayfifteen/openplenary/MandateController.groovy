@@ -18,11 +18,14 @@
 
 package org.mayfifteen.openplenary
 
+import grails.plugins.springsecurity.Secured
+
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured(['ROLE_ADMIN'])
 class MandateController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -39,13 +42,14 @@ class MandateController {
 
     def save() {
         def mandateInstance = new Mandate(params)
+		
         if (!mandateInstance.save(flush: true)) {
             render(view: "create", model: [mandateInstance: mandateInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'mandate.label', default: 'Mandate'), mandateInstance.id])
-        redirect(action: "show", id: mandateInstance.id)
+        redirect(action: "composition", id: mandateInstance.id)
     }
 
     def show(Long id) {
@@ -61,6 +65,7 @@ class MandateController {
 
     def edit(Long id) {
         def mandateInstance = Mandate.get(id)
+		
         if (!mandateInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'mandate.label', default: 'Mandate'), id])
             redirect(action: "list")
@@ -87,10 +92,12 @@ class MandateController {
                 return
             }
         }
-
-        mandateInstance.properties = params
-
-        if (!mandateInstance.save(flush: true)) {
+		for( Iterator iter = mandateInstance.composition.iterator(); iter.hasNext(); ){
+			iter.next()
+			iter.remove()
+		}
+		
+        if (!mandateInstance.save(flush: true, failOnError: true)) {
             render(view: "edit", model: [mandateInstance: mandateInstance])
             return
         }
@@ -117,4 +124,37 @@ class MandateController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def composition(Long id){
+		def mandateInstance = Mandate.get(id)
+		[mandateInstance: mandateInstance, parties: PoliticalParty.list()]
+	}
+	
+	def updateComposition(Long id){
+		def mandate = Mandate.get(id)
+		int i = 0
+		
+		try {
+			MandateComposition.executeUpdate ('DELETE FROM MandateComposition WHERE mandate=:mandate', [mandate: mandate])
+			
+			if (params.party){
+				params.party.id.each {
+					def party = PoliticalParty.get(it)
+					def composition = new MandateComposition(mandate: mandate, party: party)			
+					composition.members = params.members[i].toInteger()
+					composition.save(flush:true, failOnError: true)					
+					i++
+				}
+			}
+            render(view: "show", model: [mandateInstance: mandate])
+            return
+		}catch(Exception e){
+			render e.toString()
+		}
+	}
+	
+	def getParty(Long id){
+		[party: PoliticalParty.get(id)]
+	}
+		
 }

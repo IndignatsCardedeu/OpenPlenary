@@ -25,7 +25,10 @@
 		<g:message code="admin.party.logo.label" default="Logo" />		
 	</label>
 	<div class="formfield">
-		<g:textField name="logo" value="${partyInstance?.logo}" class="inp-form"/>
+		<g:if test="${partyInstance?.logo}">
+			<img src="${createLink(controller:'files', action:'logo', id: partyInstance.logo)}" />
+		</g:if>	
+		<input type="file" name="logoImageFile"/>	
 	</div>
 </div>
 

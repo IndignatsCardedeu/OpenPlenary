@@ -35,7 +35,7 @@
 				<div class="meeting"> 
 					<div class="party-name">
 						<g:link action="party" id="${party.id}">
-			    			<span class="image"><img src="${resource(dir: 'images/parties')}/${party.logo}"/></span>
+			    			<span class="image"><img src="${createLink(controller:'files', action:'logo', id: party.logo)}"/></span>
 							${party.name}
 						</g:link> -			    							
 			    		<g:if test="${params.action=='agree'}">
@@ -105,7 +105,7 @@
 											<div class="vote up">${item.subject.getPartyThumbsUp()}</div>										
 										</div>		
 										<g:each in="${item.subject.getPartyThumbsUpList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.voteUp} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.voteUp} ${message(code:'meeting.point.votes')}"/>
 										</g:each>							
 									</div>
 									</g:if>
@@ -115,7 +115,7 @@
 											<div class="vote down">${item.subject.getPartyThumbsDown()}</div>
 										</div>								
 										<g:each in="${item.subject.getPartyThumbsDownList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.voteDown} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.voteDown} ${message(code:'meeting.point.votes')}"/>
 										</g:each>									
 									</div>
 									</g:if>
@@ -125,7 +125,7 @@
 											<div class="vote abstention">${item.subject.getPartyAbstention()}</div>
 										</div>								
 										<g:each in="${item.subject.getAbstentionList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.abstention} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.abstention} ${message(code:'meeting.point.votes')}"/>
 										</g:each>									
 									</div>								
 									</g:if>

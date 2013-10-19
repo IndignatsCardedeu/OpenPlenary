@@ -22,13 +22,13 @@
 					</g:eachError>
 				</ul>
 				</g:hasErrors>
-				<g:form method="post" >
+				<g:uploadForm method="post" >
 					<g:hiddenField name="id" value="${partyInstance?.id}" />
 					<g:hiddenField name="version" value="${partyInstance?.version}" />
 					<g:render template="form"/>
 					<g:actionSubmit class="save form-submit" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					<g:actionSubmit class="delete form-delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</g:form>
+				</g:uploadForm>
 			</div>
 		</div>
 	</body>

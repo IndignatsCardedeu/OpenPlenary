@@ -28,6 +28,8 @@ class PoliticalParty {
 
     static constraints = {
 		name(nullable: false, blank: false)
-		logo(nullable: false, blank: false)
+		logo(nullable: true, blank: true)
     }
 }
+
+//ALTER TABLE political_party CHANGE logo logo VARCHAR(255) NULL;

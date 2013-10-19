@@ -90,7 +90,7 @@
 												<div class="vote up">${subject.getPartyThumbsUp()}</div>										
 											</div>		
 											<g:each in="${subject.getPartyThumbsUpList()}" status="j" var="vote">					
-												<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.voteUp} ${message(code:'meeting.point.votes')}"/>
+												<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.voteUp} ${message(code:'meeting.point.votes')}"/>
 											</g:each>							
 										</div>
 										</g:if>
@@ -100,7 +100,7 @@
 												<div class="vote down">${subject.getPartyThumbsDown()}</div>
 											</div>								
 											<g:each in="${subject.getPartyThumbsDownList()}" status="j" var="vote">					
-												<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.voteDown} ${message(code:'meeting.point.votes')}"/>
+												<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.voteDown} ${message(code:'meeting.point.votes')}"/>
 											</g:each>									
 										</div>
 										</g:if>
@@ -110,7 +110,7 @@
 												<div class="vote abstention">${subject.getPartyAbstention()}</div>
 											</div>								
 											<g:each in="${subject.getAbstentionList()}" status="j" var="vote">					
-												<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.abstention} ${message(code:'meeting.point.votes')}"/>
+												<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.abstention} ${message(code:'meeting.point.votes')}"/>
 											</g:each>									
 										</div>								
 										</g:if>
@@ -178,7 +178,7 @@
 											<div class="vote up">${subject.getPartyThumbsUp()}</div>										
 										</div>		
 										<g:each in="${subject.getPartyThumbsUpList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.voteUp} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.voteUp} ${message(code:'meeting.point.votes')}"/>
 										</g:each>							
 									</div>
 									</g:if>
@@ -188,7 +188,7 @@
 											<div class="vote down">${subject.getPartyThumbsDown()}</div>
 										</div>								
 										<g:each in="${subject.getPartyThumbsDownList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.voteDown} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.voteDown} ${message(code:'meeting.point.votes')}"/>
 										</g:each>									
 									</div>
 									</g:if>
@@ -198,7 +198,7 @@
 											<div class="vote abstention">${subject.getPartyAbstention()}</div>
 										</div>								
 										<g:each in="${subject.getAbstentionList()}" status="j" var="vote">					
-											<g:img dir="images/parties" file="${vote.party.logo}" title="${vote.party.name} ${vote.abstention} ${message(code:'meeting.point.votes')}"/>
+											<img src="${createLink(controller:'files', action:'logo', id: vote.party.logo)}" title="${vote.party.name} ${vote.abstention} ${message(code:'meeting.point.votes')}"/>
 										</g:each>									
 									</div>								
 									</g:if>

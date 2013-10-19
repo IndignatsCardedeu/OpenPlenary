@@ -22,10 +22,10 @@
 					</g:eachError>
 				</ul>
 				</g:hasErrors>
-				<g:form action="save" >
+				<g:uploadForm action="save" >
 					<g:render template="form"/>
 					<g:submitButton name="create" class="save form-submit" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</g:form>
+				</g:uploadForm>
 			</div>
 		</div>
 	</body>

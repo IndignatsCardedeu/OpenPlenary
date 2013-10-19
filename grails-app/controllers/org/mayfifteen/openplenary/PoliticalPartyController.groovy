@@ -42,7 +42,15 @@ class PoliticalPartyController {
     }
 
     def save() {
+		def file = request.getFile('logoImageFile')
+		
+		if(!file.empty) {
+			params.logo = System.currentTimeMillis() + "_" + file.getOriginalFilename()
+			file.transferTo( new File(grailsApplication.config.grails.openplenary.fileUploadPath + '/' + params.logo) )
+		}
+		
         def partyInstance = new PoliticalParty(params)
+		
         if (!partyInstance.save(flush: true)) {
             render(view: "create", model: [partyInstance: partyInstance])
             return
@@ -91,6 +99,13 @@ class PoliticalPartyController {
                 return
             }
         }
+		
+		def file = request.getFile('logoImageFile')
+		
+		if(!file.empty) {
+			params.logo = System.currentTimeMillis() + "_" + file.getOriginalFilename()
+			file.transferTo( new File(grailsApplication.config.grails.openplenary.fileUploadPath + '/' + params.logo) )
+		}
 
         partyInstance.properties = params
 

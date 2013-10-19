@@ -1,43 +1,77 @@
 /* -- */
 println("Loading custom properties...")
 
-grails.serverURL = "http://yourdomain:8080/${appName}"
+// Needed to generate the user register confirmation link
+// Type your domain and/or context if it different than the default value http://localhost:8080/openplenary  
+grails.serverURL = "http://localhost:8080/openplenary"
 
-grails.openplenary.defaultLocale = new Locale("ca","ES")
+// Sets the default locale 
+grails.openplenary.defaultLocale = new Locale("en","EN")
 
-dataSource {
-	pooled = true
-	driverClassName = "com.mysql.jdbc.Driver"
-	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-	dbCreate = "update" // one of 'create', 'create-drop','update'
-	url = "jdbc:mysql://localhost/openplenary?useUnicode=yes&characterEncoding=UTF-8"
-	username = "user"
-	password = "password"
-}
+// DATABASE SETTINGS
+// By default H2 database in memory mode
+//  
+// Uncomment the code below and configure it properly if you use a MySQL database server.
+//
+//dataSource {
+//	pooled = true
+//	driverClassName = "com.mysql.jdbc.Driver"
+//	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+//	dbCreate = "update" // one of 'create', 'create-drop','update'
+//	url = "jdbc:mysql://localhost/openplenary?useUnicode=yes&characterEncoding=UTF-8"
+//	username = "user"
+//	password = "password"
+//}
 
-grails {
-	mail {
-		host = "smtp.foo.bar"
-		port = 465
-		username = "user@foo.bar"
-		password = "passwd"
-		props = ["mail.smtp.auth":"true",
-				 "mail.smtp.socketFactory.port":"465",
-				 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
-				 "mail.smtp.socketFactory.fallback":"false"]
-	
-	}
-}
+// MAIL SETTINGS
+// Uncomment and configure if needed.
+// Follow this link for more information: http://grails.org/plugin/mail
+//
+//grails {
+//	mail {
+//		host = "smtp.foo.bar"
+//		port = 465
+//		username = "user@foo.bar"
+//		password = "passwd"
+//		props = ["mail.smtp.auth":"true",
+//				 "mail.smtp.socketFactory.port":"465",
+//				 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+//				 "mail.smtp.socketFactory.fallback":"false"]
+//	
+//	}
+//}
 
+// The from email address used in the register confirmation message
 grails.openplenary.mail.from = 'user@foo.bar'
+
+// The HTML layout. By default 'main' 
 grails.openplenary.layout = 'main'
+
+// The name of the town, city or entity
 grails.openplenary.name = 'FooCity'
+
+// Allow anonymous votes. By default false
 grails.openplenary.voting.allowAnonymous = false
+
+// Maximum number of anonymous votes if "grails.openplenary.voting.allowAnonymous" is set to true
+// By default 5  
 grails.openplenary.voting.maxAnonymousVotes = 5
+
+// Numbers of limit characters to slice the text of a point.
+// By default 1000
 grails.openplenary.subject.slicePoint = 1000
+
+// If true the users email is encoded in the database.
+// By default false
 grails.openplenary.encodeEmail = false
 
+// File upload directory 
+grails.openplenary.fileUploadPath = "/foo/bar"
+
+// FACEBOOK Settings
 grails.plugins.springsecurity.facebook.appId='yourAppId'
 grails.plugins.springsecurity.facebook.secret='yourSecret'
+
+// TWITTER Settings - NOT IMPLEMENTED YET
 grails.plugins.springsecurity.twitter.consumerKey='yourKey'
 grails.plugins.springsecurity.twitter.consumerSecret='yourSecret'

@@ -9,7 +9,7 @@
 		<div id="meetings-box">
 			<div class="meeting"> 
 				<div class="party-name">
-		    		<span class="image"><img src="${resource(dir: 'images/parties')}/${party.logo}"/></span>
+		    		<span class="image"><img src="${createLink(controller:'files', action:'logo', id: party.logo)}"/></span>
 		    		${party.description}
 	    		</div>
 	    	</div> 	

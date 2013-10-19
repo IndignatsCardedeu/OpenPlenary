@@ -219,6 +219,45 @@
 		<div class="nav-divider">&nbsp;</div>
 		                    
 		<ul
+			<g:if test="${params.controller=='mandate'}">
+				class="current"
+			</g:if>		 
+			<g:else>
+				class="select"
+			</g:else>		
+		>
+			<li>
+				<g:link controller="mandate"><b><g:message code="admin.menu.mandates" /></b><!--[if IE 7]><!--></g:link><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<div class="select_sub
+					<g:if test="${params.controller=='mandate'}">
+						show
+					</g:if>		 				 
+				">
+					<ul class="sub">
+						<li
+							<g:if test="${params.controller=='mandate' && params.action=='list'}">
+								class="sub_show"
+							</g:if>
+						>
+							<g:link controller="mandate"><g:message code="admin.mandate.list" /></g:link>
+						</li>
+						<li
+							<g:if test="${params.controller=='mandate' && params.action=='create'}">
+								class="sub_show"
+							</g:if>				
+						>
+							<g:link controller="mandate" action="create"><g:message code="admin.mandate.create" /></g:link>
+						</li>
+					</ul>
+				</div>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+		</ul>		
+		
+		<div class="nav-divider">&nbsp;</div>
+		                    
+		<ul
 			<g:if test="${params.controller=='meeting'}">
 				class="current"
 			</g:if>		 
@@ -258,7 +297,7 @@
 		<div class="nav-divider">&nbsp;</div>
 		
 		<ul
-			<g:if test="${params.controller=='party'}">
+			<g:if test="${params.controller=='politicalParty'}">
 				class="current"
 			</g:if>		 
 			<g:else>
@@ -269,20 +308,20 @@
 				<g:link controller="politicalParty"><b><g:message code="admin.menu.parties" /></b><!--[if IE 7]><!--></g:link><!--<![endif]-->
 				<!--[if lte IE 6]><table><tr><td><![endif]-->
 				<div class="select_sub
-					<g:if test="${params.controller=='party'}">
+					<g:if test="${params.controller=='politicalParty'}">
 						show
 					</g:if>					
 				">
 					<ul class="sub">
 						<li
-							<g:if test="${params.controller=='party' && params.action=='list'}">
+							<g:if test="${params.controller=='politicalParty' && params.action=='list'}">
 								class="sub_show"
 							</g:if>						
 						>
 							<g:link controller="politicalParty"><g:message code="admin.parties.list" /></g:link>
 						</li>
 						<li
-							<g:if test="${params.controller=='party' && params.action=='create'}">
+							<g:if test="${params.controller=='politicalParty' && params.action=='create'}">
 								class="sub_show"
 							</g:if>						
 						>

@@ -271,3 +271,25 @@ a.icon-5-on	{
 a:hover.icon-5-on	{
 	background: url(../../images/admin/table/table_icon_5_on.png) 0 -24px;
 }
+
+.party-composition {
+	margin-right: 10px;
+	border: 1px solid #D7D7D7;
+	background-color: #EEEEEE;
+	padding: 5px;
+	float: left;
+}
+
+.party-composition input {
+	text-align: center;
+	width: 30px;
+}
+
+.partyselect:hover {
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+
+.clickme {
+	cursor: pointer;
+}

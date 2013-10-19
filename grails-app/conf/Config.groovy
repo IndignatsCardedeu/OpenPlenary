@@ -18,10 +18,15 @@
 
 // locations to search for config files that get merged into the main config
 // config files can either be Java properties files or ConfigSlurper scripts
+def envir = grails.util.Environment.current.name
 println("*** Application running directory: " + new File(".").getCanonicalPath())
+println("*** Environment name: " + envir)
+
 grails.config.locations = [
 	"classpath:${appName}-config.groovy",
-	"file:./${appName}-config.groovy"
+	"file:./${appName}-config.groovy",
+	"classpath:${appName}-${envir}-config.groovy",
+	"file:./${appName}-${envir}-config.groovy"
 ]
 
 if (System.properties["${appName}.config.location"]) {
@@ -145,3 +150,4 @@ grails.openplenary.voting.maxAnonymousVotes = 5
 grails.openplenary.subject.slicePoint = 1000
 grails.openplenary.defaultLocale = new Locale("en","EN") 
 grails.openplenary.encodeEmail = false
+grails.openplenary.fileUploadPath = ""

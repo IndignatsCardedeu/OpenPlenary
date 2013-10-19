@@ -107,7 +107,7 @@
 						<tr>
 							<td>
 								<input type="hidden" name="party.id" value="${item.party.id}" />
-								<img src="${resource(dir: 'images/parties')}/${item.party.logo}"/>
+								<img src="${createLink(controller:'files', action:'logo', id: item.party.logo)}"/>
 							</td>
 							<td><input type="text" value="" name="voteUp" id="voteUp_${item.party.id}" class="vote party_${item.party.id}" onclick="setPartyVote('Up', ${item.party.id});"/></td>
 							<td><input type="text" value="" name="voteDown" id="voteDown_${item.party.id}" class="vote party_${item.party.id}" onclick="setPartyVote('Down', ${item.party.id});"/></td>

@@ -56,6 +56,27 @@ function setRelevant(data, id){
 	}
 }
 
+function removeElement(object){
+	$(object).fadeOut(500, function() { $(this).remove(); });
+	//$(object).remove().effect( "highlight", {}, 1000 )	;
+}
+
+function openDialog(dialog){
+	$( dialog ).dialog('open');
+}
+
+function addParty(id){
+	if ($("#partyComp_" + id).length==0){
+		$.get(contextPath + '/mandate/getParty/' + id, function(data) {		
+			$(data).hide().appendTo("#party-composition-list").effect( "highlight", {}, 1000 )
+		});				
+	}else{
+		$("#partyComp_" + id).effect( "highlight", {}, 1000 );
+	}
+	
+	$("#partyselect-dialog").dialog("close");
+}
+
 $(document).ready(function() {
 	$(".error").append('<div class="formfielderror"><div class="error-left"></div><div class="error-inner">Check this field</div></div>');
 });

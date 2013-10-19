@@ -38,7 +38,11 @@
 						
 							<td><g:link action="show" id="${partyInstance.id}">${fieldValue(bean: partyInstance, field: "name")}</g:link></td>
 						
-							<td><img src="${resource(dir: 'images/parties')}/${fieldValue(bean: partyInstance, field: "logo")}"/></td>
+							<td>
+							
+								<img src="${createLink(controller:'files', action:'logo', id: partyInstance.logo)}" />
+								
+							</td>
 
 							<td class="options-width">
 								<g:link controller="politicalParty" action="edit" id="${partyInstance.id}" title="${g.message(code:'admin.action.edit')}" class="icon-1 info-tooltip"></g:link>

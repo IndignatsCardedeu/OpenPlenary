@@ -41,7 +41,7 @@
 						<span id="logo-label" class="property-label"><g:message code="admin.party.logo.label" default="Logo" /></span>
 						
 							<span class="property-value" aria-labelledby="logo-label">
-								<img src="${resource(dir: 'images/parties')}/<g:fieldValue bean="${partyInstance}" field="logo"/>"/>
+								<img src="${createLink(controller:'files', action:'logo', id: partyInstance.logo)}"/>
 							</span>
 						
 					</li>
