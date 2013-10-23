@@ -28,11 +28,11 @@
 	    		</div>
 				<p>${meeting.description}</p>
 				<ul class="meeting-item-list">
-					<li class="meeting-item minutes-item">
-						<g:if test="${meeting.officialMinutesUrl}">							
-							<a href="${meeting.officialMinutesUrl}"><g:message code="meeting.minutes"/></a>
-						</g:if>					
-					</li>				
+					<g:if test="${meeting.officialMinutesUrl}">
+						<li class="meeting-item minutes-item">
+							<a href="${meeting.officialMinutesUrl}"><g:message code="meeting.minutes"/></a>				
+						</li>
+					</g:if>				
 					<li class="meeting-item taglist-item">										
 						<g:each in="${meetingTags}" var="tag" status="j">
 							<g:link controller="tag" action="session" id="${meeting.id}" params="${[tag: tag.key]}">${tag.key}</g:link><g:if test="${j+1<meetingTags.size()}">,</g:if>
