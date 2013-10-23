@@ -8,13 +8,11 @@
 		<div id="meetings-box">
 			<g:each in="${meetings}" status="i" var="meeting">
 				<div class="meeting meeting_item"> 
-					<div class="meeting-name">
+					<div class="meeting-name meeting">
 			    		<span class="date"><g:formatDate date="${meeting.startDate}" format="dd-MM" /></span>
 			    		<g:link action="session" id="${meeting.id}" >${meeting.name}</g:link>
 		    		</div>
-		        	<p>
-						${meeting.description}
-					</p>  
+					 
 		    	</div> 			
 			</g:each>
 			<div id="pagebrowser">

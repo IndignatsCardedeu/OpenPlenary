@@ -31,6 +31,7 @@ Released   : 20081009
         <div id="bar">
         	<div class="navLink"><a href="#project">Projecte</a></div>
            	<div class="navLink"><a href="#install">Instal·lació</a></div>
+           	<div class="navLink"><a href="#configure">Configuració</a></div>
             <div class="navLink"><a href="#license">Llicència</a></div>
       </div>
         <div class="contentTitle"><h1><a name="project">Projecte</a></h1></div>
@@ -60,9 +61,34 @@ Released   : 20081009
           </p>
           <pre>&gt; grails run-app</pre>
           <p>
-          	Si arrenca l'aplicació ja pots començar a tocar el codi per adaptar-lo a les teves necessitats!
+          	Per administrar el contingut accedeix a <a href="http://localhost:8080/openplenary/admin">http://localhost:8080/openplenary/admin</a> (usuari admin, password admin)
           </p>
         </div>
+        <div class="contentTitle"><h1><a name="configure">Configuració</a></h1></div>
+        <div class="contentText">
+          <p>
+          	Pots configurar l'aplicació creant el fitxer openplenary-config.groovy al directory d'execució del servidor 
+          	d'aplicacions. Si no saps quin és, mira als logs del servidor el missatge "Application running directory" 
+          	per veure el path.
+          </p>
+          <p>Les opcions de configuració són:</p>
+          <ul>
+          	<li><strong>grails.serverURL:</strong> Necessari per generar correctament l'enllaç de confirmació de registre de l'usuari</li>
+          	<li><strong>grails.openplenary.defaultLocale:</strong> Idioma de l'aplicació, per defecte: <em>new Locale("en","EN")</em></li>
+          	<li><strong>dataSource: </strong> Per defecte es fa servir una base de dades H2 a memòria. <a href="http://grails.org/doc/2.1.0/guide/single.html#dataSource">Mira la documentació de Grails per configurar la base de dades que necessitis</a></li>
+          	<li><strong>mail:</strong> <a href="http://grails.org/plugin/mail">Mira la documentació del plugin mail per les opcions de configuració</a></li>
+          	<li><strong>grails.openplenary.mail.from:</strong> Adreça de correu que es farà servir com a "from:"</li>
+          	<li><strong>grails.openplenary.layout:</strong> Plantilla/disseny amb el que es visualitzarà OpenPlenary. Per defecte "main"</li>
+          	<li><strong>grails.openplenary.name: </strong> Nom del poble, ciutat o entitat que fa servir OpenPlenary</li>
+          	<li><strong>grails.openplenary.voting.allowAnonymous: </strong> Permet vots anònims. Per defecte "false"</li>
+          	<li><strong>grails.openplenary.voting.maxAnonymousVotes: </strong> Màxim número de vots anònims permesos si la opció "grails.openplenary.voting.allowAnonymous" està activada. Per defecte 5</li>
+          	<li><strong>grails.openplenary.subject.slicePoint: </strong> Caracters on es tallaran els continguts dels punts. Per defecte 1000.</li>
+          	<li><strong>grails.openplenary.encodeEmail: </strong> Indica si es guardaran els emails codificats. Per defecte "false"</li>
+          	<li><strong>grails.openplenary.fileUploadPath: </strong> Directori del servidor on es pujaran els fitxers</li>
+          	<li><strong>grails.plugins.springsecurity.facebook.appId:</strong> Identificador de l'aplicació Facebook (necessari per login).</li>
+          	<li><strong>grails.plugins.springsecurity.facebook.secret:</strong> Text/contrassenya de l'aplicació Facebook (necessari per login).</li>
+          </ul>          
+		</div>           
         <div class="contentTitle"><h1><a name="license">Llicència</a></h1></div>
         <div class="contentText">
           <p>El projecte és de domini public amb llicència <a href="http://www.gnu.org/licenses/gpl.html">GNU/GPL</a></p>

@@ -7,28 +7,23 @@
 	<body>	
 		<div id="current_meeting">
 			<div id="current_meeting_main">
-				<h1>
-					<g:link action="session" id="${currentMeeting.id}">
-						<g:if test="${currentMeeting.startDate<new Date()}">
-							<g:message code="meeting.last"/>
-						</g:if>
-						<g:else>
-							<g:message code="meeting.next"/>
-						</g:else>
-					</g:link>
-				</h1>
 				<div id="current_meeting_name">
 					<span class="date"><g:formatDate date="${currentMeeting.startDate}" format="dd/MM" /></span>
 					<g:link action="session" id="${currentMeeting.id}"> "${currentMeeting.name}"</g:link>
 				</div>
 				<p>${currentMeeting.description}</p>
-				<tc:tagCloud tags="${currentMeetingTags}" controller="tag" action="session" id="${currentMeeting.id}" paramName="tag"/>					
-				<div id="current_meeting_footer">
-					<g:if test="${currentMeeting.officialMinutesUrl}">
-						<a href="${currentMeeting.officialMinutesUrl}" class="button"><g:message code="meeting.minutes"/></a>
-					</g:if>
-					<g:link action="session" id="${currentMeeting.id}" class="button"><g:message code="meeting.viewAll"/></g:link>
-				</div>
+				<ul class="meeting-item-list">
+					<li class="meeting-item minutes-item">
+						<g:if test="${currentMeeting.officialMinutesUrl}">							
+							<a href="${currentMeeting.officialMinutesUrl}"><g:message code="meeting.minutes"/></a>
+						</g:if>					
+					</li>				
+					<li class="meeting-item taglist-item">										
+						<g:each in="${currentMeetingTags}" var="tag" status="j">
+							<g:link controller="tag" action="session" id="${currentMeeting.id}" params="${[tag: tag.key]}">${tag.key}</g:link><g:if test="${j+1<currentMeetingTags.size()}">,</g:if>							
+						</g:each>
+					</li>
+				</ul>
 			</div>
 			<div id="current_meeting_points">
 				<h2><g:message code="meeting.relevants"/></h2>
@@ -69,6 +64,9 @@
 					</div>
 				</div>
 				</g:each>
+				<div class="last_meeting_footer">
+					<g:link action="session" id="${currentMeeting.id}" class="button"><g:message code="main.viewAll"/></g:link>
+				</div>
 			</div>
 		</div>
 		

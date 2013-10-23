@@ -65,10 +65,10 @@
 				</div>		
 				<div class="meeting_point_text">
 					<div class="meeting_point_content">
-						<strong>${item.name}.</strong> ${item.description}
+						<strong>${item.name}.</strong> <op:setMinutesLink text="${item.description}" minutesLink="${item.meeting.officialMinutesUrl}"/> 
 					</div>
 					<div class="meeting_point_agreements">
-					 	${item.agreements}
+					 	<op:setMinutesLink text="${item.agreements}" minutesLink="${item.meeting.officialMinutesUrl}"/>
 					</div>
 				</div>		
 				<div class="meeting_point_area_buttons">

@@ -42,4 +42,17 @@ class Meeting {
 		sort startDate: "desc"
 		subjects sort: 'id', order: 'asc'
 	}
+	
+	def getTags(){
+		def tags = [:]
+		this.subjects.each {
+			//tags = tags + it.tags as Set
+			it.tags.each {
+				if (tags[it]) tags[it]++
+					else tags[it] = 1
+			}
+		}
+		
+		return tags
+	}
 }

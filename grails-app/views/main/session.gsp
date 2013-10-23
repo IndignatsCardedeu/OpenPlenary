@@ -24,12 +24,21 @@
 			<div class="meeting"> 
 				<div class="meeting-name">
 		    		<span class="date"><g:formatDate date="${meeting.startDate}" format="dd-MM" /></span>
-		    		${meeting.name}
-					<g:if test="${meeting.officialMinutesUrl}">
-						<a href="${meeting.officialMinutesUrl}" class="meeting_icons"><img src="${resource(dir: 'images/main', file: 'minutes.png')}" /></a>
-					</g:if>		    		 		    		
+		    		${meeting.name}	    		 		    		
 	    		</div>
-				<tc:tagCloud tags="${meetingTags}" controller="tag" action="session" id="${meeting.id}" paramName="tag" size="${[start: 10, end: 40, unit: 'em']}"/>				 
+				<p>${meeting.description}</p>
+				<ul class="meeting-item-list">
+					<li class="meeting-item minutes-item">
+						<g:if test="${meeting.officialMinutesUrl}">							
+							<a href="${meeting.officialMinutesUrl}"><g:message code="meeting.minutes"/></a>
+						</g:if>					
+					</li>				
+					<li class="meeting-item taglist-item">										
+						<g:each in="${meetingTags}" var="tag" status="j">
+							<g:link controller="tag" action="session" id="${meeting.id}" params="${[tag: tag.key]}">${tag.key}</g:link><g:if test="${j+1<meetingTags.size()}">,</g:if>
+						</g:each>
+					</li>
+				</ul>			 
 	    	</div>	    	 	
 	    	<g:if test="${relevants}">
 		    	<div id="subjects-relevant-list">	    		
@@ -71,10 +80,9 @@
 									<strong><g:link controller="main" action="point" id="${subject.id}">${subject.name}.</g:link></strong> <op:truncate text="${subject.description}" length="200"/>
 								</div>			
 								<div class="meeting_point_area_buttons">
-									<div class="meeting_point_tags">
-										<g:each in="${subject.tags}" var="tag" status="j">
-										 	<g:if test="${j>0}">,</g:if>
-											<g:link controller="main" action="tag" id="${tag}">${tag}</g:link>
+									<div class="meeting_point_tags ">										
+										<g:each in="${subject.tags}" var="tag" status="j">																					 
+											<g:link controller="main" action="tag" id="${tag}">${tag}</g:link><g:if test="${j+1<subject.tags.size()}">,</g:if>
 										</g:each>
 									</div>
 									<g:link controller="main" action="point" id="${subject.id}" class="button">${subject.comments.size()} <g:message code="meeting.point.comments"/></g:link>

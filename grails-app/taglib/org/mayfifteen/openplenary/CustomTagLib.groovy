@@ -41,6 +41,14 @@ class CustomTagLib {
 		
 	}
 	
+	def setMinutesLink = { attrs ->
+		String linkText = "<a href='" + attrs.minutesLink + "'>" + message(code: 'meeting.minutes.moreInfo') + "</a>" 
+		if (!attrs.minutesLink) linkText = "<a>" + message(code: 'meeting.minutes.moreInfo') + "</a> <em>(" +message(code: 'meeting.minutes.notAvailable') + ")</em>"
+		
+		String text = attrs.text.replaceAll("#ACTA#",linkText)
+		out << text
+	}
+	
 	def parties = { attrs ->
 		def parties = PoliticalParty.list(sort: "name")
 		out << render(template:"/main/includes/parties", model: [parties: parties])

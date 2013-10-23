@@ -2,7 +2,7 @@
 println("Loading custom properties...")
 
 // Needed to generate the user register confirmation link
-// Type your domain and/or context if it different than the default value http://localhost:8080/openplenary  
+// Type your domain and/or context if it is different than the default value http://localhost:8080/openplenary  
 grails.serverURL = "http://localhost:8080/openplenary"
 
 // Sets the default locale 

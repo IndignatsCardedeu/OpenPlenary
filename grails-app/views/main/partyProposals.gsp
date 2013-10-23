@@ -133,8 +133,11 @@
 							</div>
 						</g:if>
 					</div>
-				</g:each> 	 
-			</div> 						 		
-		</div>			
+				</g:each>
+				<div id="pagebrowser">
+					<g:paginate total="${subjectsTotal}" id="${party.id}" />
+				</div>
+			</div>
+		</div>					
 	</body>
 </html>

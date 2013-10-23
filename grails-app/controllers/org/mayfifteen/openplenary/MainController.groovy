@@ -33,21 +33,13 @@ class MainController {
 		def mainMeeting = meetings.get(0)
 		def relevants = getRelevants(mainMeeting.subjects)
 		
-		def parties = PoliticalParty.list(sort: "name")
-		
-		def tags = [:]
-		mainMeeting.subjects.each {
-			it.tags.each {
-				if (tags[it]) tags[it]++
-					else tags[it] = 1
-			}
-		}
+		def parties = PoliticalParty.list(sort: "name")		
 		
 		[
 			currentMeeting: mainMeeting, 
 			relevants: relevants, 
 			parties: parties, 
-			currentMeetingTags: tags, 
+			currentMeetingTags: mainMeeting.tags, 
 			meetings: meetings
 		]
 	}
@@ -120,7 +112,7 @@ class MainController {
 							}
 		if (voteDownList.size()>10) voteDownList = voteDownList[0..9]
 		
-		if (proposals.size()>5) proposals = proposals[0..4]
+		if (proposals.size()>5) proposals = proposals[0..9]
 		
 		[
 			party: party, 
@@ -149,26 +141,18 @@ class MainController {
 	}
 	
 	def sessions(){
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        params.max = Math.min(params.max ? params.int('max') : 15, 100)
         [meetings: Meeting.findAllByPublished(true, params), meetingsTotal: Meeting.countByPublished(true)]
 	}
 	
 	def session(){
 		Meeting meeting = Meeting.get(params.id)
-		def relevants = getRelevants(meeting.subjects)
-
-		def tags = [:]
-		meeting.subjects.each {
-			it.tags.each {
-				if (tags[it]) tags[it]++
-					else tags[it] = 1
-			}
-		}
 		
-		def subjects = meeting.subjects.minus(relevants).sort{ it.votes.size() }.reverse()
-		
-		if (meeting.published){		
-			[meeting: meeting, subjects: subjects, relevants: relevants, meetingTags: tags]
+		if (meeting && meeting.published){
+			def relevants = getRelevants(meeting.subjects)
+			def subjects = meeting.subjects.minus(relevants).sort{ it.votes.size() }.reverse()
+			
+			[meeting: meeting, subjects: subjects, relevants: relevants, meetingTags: meeting.tags]
 		}else{
 			redirect(action: "home")
 		}
@@ -176,7 +160,7 @@ class MainController {
 	
 	def point(){
 		Subject subject = Subject.get(params.id)
-		if (subject.meeting.published){
+		if (subject && subject.meeting.published){
 			[item: Subject.get(params.id)]
 		}else{
 			redirect(action: "home")
@@ -184,8 +168,10 @@ class MainController {
 	}
 	
 	def agree(){
+		params.max = Math.min(params.max ? params.int('max') : 20, 100)
+		
 		def party = PoliticalParty.get(params.id)
-		def proposals = PartyProposal.createCriteria().list() {
+		def proposals = PartyProposal.createCriteria().list(params) {
 			eq("party", party)
 			gt("voteUp", 0)
 			subject {
@@ -197,12 +183,14 @@ class MainController {
 			}
 		}
 		
-		render(view: "partyProposals", model: [party: party, proposals: proposals])
+		render(view: "partyProposals", model: [party: party, proposals: proposals, subjectsTotal: proposals.totalCount])
 	}
 	
 	def against(){
+		params.max = Math.min(params.max ? params.int('max') : 20, 100)
+		
 		def party = PoliticalParty.get(params.id)
-		def proposals = PartyProposal.createCriteria().list() {
+		def proposals = PartyProposal.createCriteria().list(params) {
 			eq("party", party)
 			gt("voteDown", 0)
 			subject {
@@ -214,12 +202,14 @@ class MainController {
 			}
 		}
 		
-		render(view: "partyProposals", model: [party: party, proposals: proposals])
+		render(view: "partyProposals", model: [party: party, proposals: proposals, subjectsTotal: proposals.totalCount])
 	}
 	
 	def proposals(){
+		params.max = Math.min(params.max ? params.int('max') : 20, 100)
+		
 		def party = PoliticalParty.get(params.id)
-		def proposals = PartyProposal.createCriteria().list() {
+		def proposals = PartyProposal.createCriteria().list(params) {
 			eq("party", party)
 			or {
 				eq("author", true)
@@ -234,7 +224,7 @@ class MainController {
 			}
 		}
 		
-		render(view: "partyProposals", model: [party: party, proposals: proposals])
+		render(view: "partyProposals", model: [party: party, proposals: proposals, subjectsTotal: proposals.totalCount])
 	}
 	
 	def voteUp(){

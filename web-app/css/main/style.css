@@ -283,7 +283,7 @@ textarea {
 #current_meeting {
 	font-size: 12px;
 	overflow: auto;
-	padding-bottom: 25px;
+	padding-bottom: 10px;
 	border-bottom: 1px solid #666666;
 }
 
@@ -305,11 +305,11 @@ textarea {
 	margin-top: 20px;
 	font-size: 22px;
 	font-style: italic;
-	height: 50px;
+	height: 40px;
 }
 
 #current_meeting_points {
-	padding: 25px 20px 15px 20px;
+	padding: 25px 20px 25px 20px;
 	float: right;
 	background-color: #FEEF9F;
 	width: 369px;	
@@ -324,6 +324,14 @@ textarea {
 	text-transform: uppercase;
 	margin: 0 0 20px 0;
 	padding: 0;
+}
+
+.current_meeting_tags {
+	margin: 0 0 10px 10px;
+}
+
+.current_meeting_tags a:hover {
+	text-decoration: underline;
 }
 
 .meeting_point {
@@ -496,6 +504,28 @@ textarea {
 	font-size: 16px;		
 }
 
+.meeting-name:hover {
+	border-bottom: 2px solid #FCBD0F;
+}
+
+.meeting-name:hover .date {
+	background-color: #FCBD0F;
+}
+
+.meeting .meeting-tags a {
+	color: #333333;
+	font-weight: normal;
+}
+
+.meeting-tags {	 
+	font-size: 10px;	
+	margin: 0 0 10px 30px;
+}
+
+.meeting-tags a:hover {
+	text-decoration: underline;
+}
+
 .party-name {
 	border-bottom: 2px solid #FDD60F;
 	height: 28px;
@@ -576,7 +606,7 @@ textarea {
 
 #subjects-relevant-list {
 	font-size: 12px;
-	margin: 0 20px 20px 20px;
+	margin: 20px 0px 20px 0px;
 	background-color: #F6F6F6;
 	padding: 0 0 5px 0;
 }
@@ -590,7 +620,7 @@ textarea {
 
 #subjects-list {
 	font-size: 12px;
-	margin: 0 20px 0 20px;
+	margin: 20px 0px 20px 0px;
 }
 
 #subjects-list .meeting_point {	
@@ -909,4 +939,34 @@ h3{
 .tip {
 	font-size: 12px;
 	color: #880000;		
+}
+
+iframe {
+	text-align: center;
+}
+
+.meeting-item-list {
+	padding: 0 0 0 15px;
+	margin: 0;	
+}
+
+.meeting-item {		
+	padding: 5px 0 0 22px; 
+}
+
+.meeting-item a {
+	color: #333333;
+	font-weight: normal;
+}
+
+.meeting-item a:hover {
+	text-decoration: underline;
+}
+
+.minutes-item {
+	background-image: url("../../images/main/minutes.png");		
+}
+
+.taglist-item {
+	background-image: url("../../images/main/tags.png");
 }

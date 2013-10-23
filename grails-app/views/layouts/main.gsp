@@ -17,8 +17,10 @@
 	<div id="container">
 		<div id="header">
 			<div id="logo">
+				<a href="${resource(dir:'/')}">
 				<g:message code="main.app.name"/>
 				${grailsApplication.config.grails.openplenary.name}
+				</a>
 			</div>
 		    <div id="menu">
 		        <ul>                                                                                                                      
