@@ -14,8 +14,6 @@ class AffinityService {
 		
 		def votes = SubjectUserVote.countByUser(user)
 		
-		println("TOTAL: " + votes)
-		
 		String query = "SELECT political_party.id as partyId, political_party.name as partyName, " +
 					"political_party.logo as partyLogo, count(*) as value FROM " + 
 					"subject_user_vote as suv, party_proposal as pp, political_party " + 
