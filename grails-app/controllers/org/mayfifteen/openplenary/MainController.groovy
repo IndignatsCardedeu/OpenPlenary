@@ -26,6 +26,7 @@ import org.mayfifteen.openplenary.utils.StringUtils
 class MainController {
 	
 	def springSecurityService
+	def affinityService
 
     def home(){ 
 		int max = 10
@@ -34,13 +35,18 @@ class MainController {
 		def relevants = getRelevants(mainMeeting.subjects)
 		
 		def parties = PoliticalParty.list(sort: "name")		
+		def affinities
+		
+		if (springSecurityService.currentUser) 
+			affinities = affinityService.getUserAffinity(springSecurityService.currentUser)
 		
 		[
 			currentMeeting: mainMeeting, 
 			relevants: relevants, 
 			parties: parties, 
 			currentMeetingTags: mainMeeting.tags, 
-			meetings: meetings
+			meetings: meetings,
+			affinities: affinities
 		]
 	}
 	
@@ -62,6 +68,8 @@ class MainController {
 	def party(){
 		PoliticalParty party = PoliticalParty.get(params.id)
 
+		def affinities = affinityService.getPartyAffinity(party.id)
+		
 		def proposals = PartyProposal.createCriteria().list() {
 							eq("party", party)
 							or {
@@ -119,7 +127,8 @@ class MainController {
 			tags: tags, 
 			voteUpList: voteUpList, 
 			voteDownList: voteDownList,
-			proposals: proposals
+			proposals: proposals,
+			affinities: affinities
 		]
 	}
 	

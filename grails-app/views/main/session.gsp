@@ -38,6 +38,14 @@
 							<g:link controller="tag" action="session" id="${meeting.id}" params="${[tag: tag.key]}">${tag.key}</g:link><g:if test="${j+1<meetingTags.size()}">,</g:if>
 						</g:each>
 					</li>
+					<li class="meeting-item social-item">
+						<a href="http://www.facebook.com/sharer.php?u=<op:pageUrl  />&title=${meeting.name}" class="popup" title="<g:message code="main.share.content" /> Facebook"><img src="${resource(dir:'images/social', file:'facebook.png')}" /></a>
+						<a href="http://twitter.com/share?url=<op:pageUrl  />&text=${meeting.name}" class="popup" title="<g:message code="main.share.content" /> Twitter"><img src="${resource(dir:'images/social', file:'twitter.png')}" /></a>
+						<a href="https://plus.google.com/share?url=<op:pageUrl  />" class="popup" title="<g:message code="main.share.content" /> Google+"><img src="${resource(dir:'images/social', file:'google.png')}" /></a>
+						<a href="http://www.linkedin.com/shareArticle?mini=true&url=<op:pageUrl  />&title=${meeting.name}" class="popup" title="<g:message code="main.share.content" /> LinkedIn"><img src="${resource(dir:'images/social', file:'linkedin.png')}" /></a>
+						<a href="http://friendfeed.com/?url=<op:pageUrl  />&title=${meeting.name}" class="popup" title="<g:message code="main.share.content" /> FrienFeed"><img src="${resource(dir:'images/social', file:'friendfeed.png')}" /></a>
+						<a href="https://delicious.com/post?url=<op:pageUrl  />&title=${meeting.name}" class="popup" title="<g:message code="main.share.content" /> Delicious"><img src="${resource(dir:'images/social', file:'delicious.png')}" /></a>
+					</li>					
 				</ul>			 
 	    	</div>	    	 	
 	    	<g:if test="${relevants}">

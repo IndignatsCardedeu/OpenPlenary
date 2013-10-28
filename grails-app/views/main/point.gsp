@@ -73,10 +73,21 @@
 				</div>		
 				<div class="meeting_point_area_buttons">
 					<div class="meeting_point_tags">
-						<g:each in="${item.tags}" var="tag" status="j">
-						 	<g:if test="${j>0}">,</g:if>
-							<g:link controller="main" action="tag" id="${tag}">${tag}</g:link>
-						</g:each>
+						<ul class="meeting-point-item-list">
+							<li class="meeting-point-item taglist-item">
+								<g:each in="${item.tags}" var="tag" status="j">						 	
+									<g:link controller="main" action="tag" id="${tag}">${tag}</g:link><g:if test="${j+1<item.tags.size()}">,</g:if>
+								</g:each>
+							</li>
+							<li class="meeting-point-item social-item">
+								<a href="http://www.facebook.com/sharer.php?u=<op:pageUrl  />&title=${item.name}" class="popup" title="<g:message code="main.share.content" /> Facebook"><img src="${resource(dir:'images/social', file:'facebook.png')}" /></a>
+								<a href="http://twitter.com/share?url=<op:pageUrl  />&text=${item.name}" class="popup" title="<g:message code="main.share.content" /> Twitter"><img src="${resource(dir:'images/social', file:'twitter.png')}" /></a>
+								<a href="https://plus.google.com/share?url=<op:pageUrl  />" class="popup" title="<g:message code="main.share.content" /> Google+"><img src="${resource(dir:'images/social', file:'google.png')}" /></a>
+								<a href="http://www.linkedin.com/shareArticle?mini=true&url=<op:pageUrl  />&title=${item.name}" class="popup" title="<g:message code="main.share.content" /> LinkedIn"><img src="${resource(dir:'images/social', file:'linkedin.png')}" /></a>
+								<a href="http://friendfeed.com/?url=<op:pageUrl  />&title=${item.name}" class="popup" title="<g:message code="main.share.content" /> FrienFeed"><img src="${resource(dir:'images/social', file:'friendfeed.png')}" /></a>
+								<a href="https://delicious.com/post?url=<op:pageUrl  />&title=${item.name}" class="popup" title="<g:message code="main.share.content" /> Delicious"><img src="${resource(dir:'images/social', file:'delicious.png')}" /></a>
+							</li>								
+						</ul>
 					</div>
 					<span class="button">${item.comments.size()} <g:message code="meeting.point.comments"/></span>
 				</div>

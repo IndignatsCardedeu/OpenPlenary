@@ -13,6 +13,15 @@
 		    		${party.description}
 	    		</div>
 	    	</div> 	
+	    	<div id="affinities">
+	    		<h2><g:message code="main.affinity.party"/></h2>
+	    		<g:each in="${affinities}" var="item">
+	    			<div class="affinity_block">
+	    				<img src="${createLink(controller:'files', action:'logo', id: item.partyLogo)}"/> 
+	    				${item.value}% 
+	    			</div>
+	    		</g:each>
+	    	</div>
 			<div id="last_meetings">
 				<div class="party_info_block">
 					<h2><g:message code="party.proposals.author"/></h2>

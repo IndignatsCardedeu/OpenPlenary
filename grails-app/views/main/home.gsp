@@ -24,8 +24,8 @@
 						</g:each>
 					</li>
 				</ul>
-			</div>
-			<div id="current_meeting_points">
+			</div>		
+			<div id="current_meeting_points">			
 				<h2><g:message code="meeting.relevants"/></h2>
 				<g:each in="${relevants}" status="i" var="subject">
 				<div class="meeting_point">
@@ -69,7 +69,17 @@
 				</div>
 			</div>
 		</div>
-		
+		<sec:ifLoggedIn>
+		   	<div id="affinities" class="affinities_home">
+		   		<h2><g:message code="main.affinity.user"/></h2>
+	    		<g:each in="${affinities}" var="item">
+	    			<div class="affinity_block">
+	    				<img src="${createLink(controller:'files', action:'logo', id: item.partyLogo)}"/> 
+	    				${item.value}% 
+	    			</div>
+	    		</g:each>
+	    	</div>		
+    	</sec:ifLoggedIn>
 		<div id="last_meetings">
 			<div class="last_meeting_block block_0">
 				<h2><g:message code="main.parties"/></h2>

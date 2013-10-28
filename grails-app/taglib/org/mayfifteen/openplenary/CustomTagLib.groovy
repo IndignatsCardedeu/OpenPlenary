@@ -59,4 +59,12 @@ class CustomTagLib {
 		out << render(template:"/main/includes/content", model: [content: content])
 	}
 	
+	def pageUrl = { attrs ->
+		String url = "http://" + request.serverName	
+		if (request.serverPort!=80) url = url + ":" + request.serverPort		
+		url = url + request.forwardURI
+		 
+		out << url
+	}
+	
 }

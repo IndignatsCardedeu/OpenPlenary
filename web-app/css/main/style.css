@@ -947,7 +947,12 @@ iframe {
 
 .meeting-item-list {
 	padding: 0 0 0 15px;
-	margin: 0;	
+	margin: 0;		
+}
+
+.meeting-point-item-list {
+	padding: 0;
+	margin: 0;		
 }
 
 .meeting-item {		
@@ -963,6 +968,20 @@ iframe {
 	text-decoration: underline;
 }
 
+.meeting-point-item {		
+	text-align: left;
+	padding: 0 0 0 22px; 
+}
+
+.meeting-point-item a {
+	color: #333333;
+	font-weight: normal;
+}
+
+.meeting-point-item a:hover {
+	text-decoration: underline;
+}
+
 .minutes-item {
 	background-image: url("../../images/main/minutes.png");		
 }
@@ -970,3 +989,37 @@ iframe {
 .taglist-item {
 	background-image: url("../../images/main/tags.png");
 }
+
+.social-item {
+	background-image: url("../../images/main/social.png");
+}
+
+#affinities {
+	background-color: #FFF7CF;
+	padding: 10px 0 7px 10px;
+	overflow: auto;
+}
+
+#affinities h2 {
+	float:left;
+	margin: 7px 10px 10px 10px;
+}
+
+.affinity_block {
+	margin: 0 10px 0 10px;
+	width: 30px;
+	float: left;
+	font-size: 10px;
+	text-align: center;
+}
+
+.affinities_home {	
+	background-color: #FEEF9F !important;
+	border-bottom: 1px solid #666666
+}
+
+.affinities_home h2 {
+	margin: 3px 10px 0px 10px !important;
+	font-size: 12px;
+	width: 100px;
+}	
