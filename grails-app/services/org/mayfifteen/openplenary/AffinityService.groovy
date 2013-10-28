@@ -61,13 +61,16 @@ class AffinityService {
 		sqlQuery.setResultTransformer(Transformers.aliasToBean(AffinityBean.class))
 		
 		List result = sqlQuery.list()
-		int total = result[0].value
 		
-		result.each {
-			it.value = it.value * 100 / total
+		if (result){
+			int total = result[0].value
+			
+			result.each {
+				it.value = it.value * 100 / total
+			}
+			
+			result.remove(0)
 		}
-		
-		result.remove(0)
 		
 		return result
 	}
