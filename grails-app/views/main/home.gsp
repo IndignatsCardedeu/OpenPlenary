@@ -74,7 +74,7 @@
 		   		<h2><g:message code="main.affinity.user"/></h2>
 	    		<g:each in="${affinities}" var="item">
 	    			<div class="affinity_block">
-	    				<img src="${createLink(controller:'files', action:'logo', id: item.partyLogo)}"/> 
+	    				<g:link controller="main" action="party" id="${item.partyId}"><img src="${createLink(controller:'files', action:'logo', id: item.partyLogo)}" alt="${item.partyName}" title="${item.partyName}"/></g:link> 
 	    				${item.value}% 
 	    			</div>
 	    		</g:each>

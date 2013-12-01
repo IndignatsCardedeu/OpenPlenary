@@ -183,4 +183,34 @@ class MeetingController {
 		render subject.partyProposals as JSON
 	}
 	
+	def getSubjectAttachments(){
+		def subject = Subject.get(params.id)
+		
+		render(view: "attachment", model: [attachments: subject.attachments])
+	}
+	
+	def saveSubjectAttachment(){
+		def file = request.getFile('attachment')
+		
+		if(file && !file.empty) {
+			params.filename = System.currentTimeMillis() + "_" + file.getOriginalFilename()
+			params.type = 1
+			file.transferTo( new File(grailsApplication.config.grails.openplenary.fileUploadPath + '/' + params.filename) )
+		}else params.type = 0
+	
+		if (params.filename!="" && params.title!=""){		
+			Attachment attachment = new Attachment(params)
+			attachment.save(flush:true)
+			render(view: "attachment", model: [attachments: attachment])
+		}else{
+			render "ERROR"
+		}
+	}
+	
+	def deleteSubjectAttachment(){
+		Attachment attachment = Attachment.get(params.id)
+		attachment.delete()
+		render params.id
+	}
+	
 }

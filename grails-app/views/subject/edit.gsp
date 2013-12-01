@@ -4,7 +4,7 @@
 	<head>
 		<meta name="layout" content="admin">
 		<g:set var="entityName" value="${message(code: 'subject.label', default: 'Subject')}" />
-		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<title><g:message code="default.edit.label" args="[entityName]" /></title>		
 	</head>
 	<body>
 		<div id="page-heading">
@@ -80,8 +80,8 @@
 								</g:each>
 								</tbody>
 							</table>		
-						</div>
-					</div>						
+						</div>					
+					</div>								
 					<g:actionSubmit class="save form-submit" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					<g:actionSubmit class="delete form-delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</g:form>

@@ -24,7 +24,7 @@ import org.mayfifteen.openplenary.utils.StringUtils
 class Subject implements Taggable {
 	
 	static belongsTo = [meeting: Meeting]
-	static hasMany = [votes: SubjectUserVote, partyProposals: PartyProposal, comments: Comment]
+	static hasMany = [votes: SubjectUserVote, partyProposals: PartyProposal, comments: Comment, attachments: Attachment]
 	
 	String name
 	String description

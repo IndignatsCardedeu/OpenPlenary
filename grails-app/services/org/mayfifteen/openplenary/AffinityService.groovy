@@ -49,8 +49,8 @@ class AffinityService {
 					"FROM party_proposal WHERE party_id= :partyId) AS pv), political_party WHERE " + 
 					"pvs.subject_id=pv.subject_id AND ((pvs.abstention>0 AND pv.abstention>0) OR " + 
 					"(pvs.vote_up>0 AND pv.vote_up>0) OR (pvs.vote_down>0 AND pv.vote_down>0)) AND " +
-					"political_party.id=pvs.party_id GROUP BY pvs.party_id ORDER BY value DESC"
-		
+					"political_party.id=pvs.party_id GROUP BY partyId, partyName, partyLogo ORDER BY value DESC"
+					
 		def sqlQuery = session.createSQLQuery(query)
 		sqlQuery.setParameter("partyId", partyId, Hibernate.LONG)
 		

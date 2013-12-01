@@ -6,24 +6,8 @@
 		<meta name="layout" content="admin">
 		<g:set var="entityName" value="${message(code: 'meeting.label', default: 'Meeting')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-		<script type="text/javascript">		
-			$(document).ready(function() {
-				$( "#votesform-dialog" ).dialog({
-					autoOpen: false,					 
-					 modal: true,
-					 width: 340,
-					 buttons: {
-						 "Save": function() {
-							$("#partyVoteForm").submit();
-						 	$( this ).dialog( "close" );
-						  },
-					 	  Cancel: function() {
-					 		$( this ).dialog( "close" );
-						}
-					 }					 					
-				});
-			});
-		</script>			
+		<script src="${resource(dir: 'js/jquery', file: 'jquery.form.js')}" type="text/javascript"></script>
+		<script src="${resource(dir: 'js', file: 'admin-subjects.js')}" type="text/javascript"></script>			
 	</head>
 	<body>
 		<div id="page-heading">
@@ -75,6 +59,14 @@
 									elementId="relevant_${subject.id}"
 									onSuccess="setRelevant(data,'${subject.id}')">
 								</g:remoteLink>
+								<a href="#" class="icon-attachment info-tooltip
+									<g:if test="${subject.attachments.size()>0}">
+										icon-attachment-on
+									</g:if>
+									<g:else>
+										icon-attachment-off
+									</g:else>
+								 " onclick="displaySubjectAttachmentsDialog(${subject.id});return false;"/></a>
 							</td>						
 						</tr>
 					</g:each>
@@ -118,6 +110,23 @@
 					</tbody>
 				</table>
 			</g:formRemote>
-		</div>						
+		</div>
+		<div id="attachmentform-dialog" title="Add attachment">
+			<g:uploadForm 
+				name="attachmentForm" 
+				url="[controller: 'meeting', action:'saveSubjectAttachment']"
+				onSuccess="attachmentSaved(data)"				
+			>
+				<input type="hidden" name="subject.id" id="attachment_subject_id" value=""/>
+				<h4>Indica una URL o puja un fitxer</h4>
+				<p><label for="title">Nom:</label><input type="text" name="title" value="" class="inp-form"/>
+				<p><label for="filename">URL:</label><input type="text" name="filename" value="" class="inp-form"/></p>
+				<p><label for="attachment">File:</label><input type="file" name="attachment"/></p>	
+			</g:uploadForm>
+		</div>
+		<div id="attachmentlist-dialog" title="Add attachment">
+			<table id="attachmentlist">
+			</table>						
+		</div>		
 	</body>
 </html>

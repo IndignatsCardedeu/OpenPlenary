@@ -65,7 +65,29 @@
 				</div>		
 				<div class="meeting_point_text">
 					<div class="meeting_point_content">
-						<strong>${item.name}.</strong> <op:setMinutesLink text="${item.description}" minutesLink="${item.meeting.officialMinutesUrl}"/> 
+						<h3>${item.name}.</h3>
+						<g:if test="${item.attachments}">
+							<div id="related">
+								Contingut relacionat
+								<ul>
+									<g:each in="${item.attachments}" var="attachment">
+										<li>
+											<a 
+												<g:if test="${attachment.type==0}">
+													href="${attachment.filename}"
+												</g:if>
+												<g:else>
+													href="<g:createLink controller="files" action="document" id="${attachment.filename}" />"
+												</g:else>
+											>
+												${attachment.title}
+											</a>
+										</li>
+									</g:each>
+								</ul>
+							</div>						 
+						</g:if>
+						<op:setMinutesLink text="${item.description}" minutesLink="${item.meeting.officialMinutesUrl}"/>						
 					</div>
 					<div class="meeting_point_agreements">
 					 	<op:setMinutesLink text="${item.agreements}" minutesLink="${item.meeting.officialMinutesUrl}"/>

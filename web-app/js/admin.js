@@ -19,7 +19,7 @@
 var contextPath;
 
 function displayPartyVotesDialog(subject){
-	$( '.vote').val("");
+	$('.vote').val("");
 	
 	$.get(contextPath + '/meeting/getSubjectPartyVotes/' + subject, function(data) {		
 		for (i=0; i<data.length; i++){		
@@ -33,6 +33,44 @@ function displayPartyVotesDialog(subject){
 		
 	$( '#subjectId').val(subject);
 	$( '#votesform-dialog' ).dialog('open');	
+}
+
+function displaySubjectAttachmentsDialog(subject){	
+	$("#attachmentlist tr").remove();
+	$.get(contextPath + '/meeting/getSubjectAttachments/' + subject, function(data) {
+		$("#attachmentlist").append(data);
+	});
+	$('#attachment_subject_id').val(subject);
+	$( '#attachmentlist-dialog' ).dialog('open');
+}
+
+function attachmentDeleted(data){
+	$("#attachment_" + data).remove();
+	
+	var count = 0;
+	
+	$("#attachmentlist tr").each(function() {
+		  $(this).removeClass("alternate-row");
+		  if (count % 2 != 0) $(this).addClass("alternate-row");
+		  count++;
+	});	
+}
+
+function attachmentSaved(data){
+	  hideLoading();
+	  if (data!="ERROR"){
+		  $( "#attachmentform-dialog" ).dialog( "close" );		  
+		  $(data).hide().appendTo("#attachmentlist").effect( "highlight", {}, 1000 );
+		  if ($("#attachmentlist tr").length % 2 == 0){
+			  $("#attachmentlist tr").last().addClass("alternate-row");  
+		  }  	  
+		  $("#attachmentlist tr").css('display', 'table-row');
+	  }
+}
+
+function displaySubjectAttachmentsFormDialog(){
+	$("#attachmentForm")[0].reset();
+	$( '#attachmentform-dialog' ).dialog('open');
 }
 
 function setPartyVote(type, party){
@@ -75,6 +113,14 @@ function addParty(id){
 	}
 	
 	$("#partyselect-dialog").dialog("close");
+}
+
+function showLoading(){
+	$("body").addClass("loading");
+}
+
+function hideLoading(){
+	$("body").removeClass("loading");
 }
 
 $(document).ready(function() {

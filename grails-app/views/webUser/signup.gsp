@@ -44,7 +44,7 @@
 					}					
 				});		
 
-				$(".popup").colorbox({inline:true, width:"50%"});		
+				$(".overlay").colorbox({inline:true, width:"50%"});		
 			});				
 		</script>
 	</head>
@@ -136,7 +136,7 @@
 				
 				<div class="fieldcontain required">
 
-					<a class="popup" style="font-size:10px;" href="#termsconditions"><g:message code="user.signup.terms" /></a>				
+					<a class="overlay" style="font-size:10px;" href="#termsconditions"><g:message code="user.signup.terms" /></a>				
 					<g:checkBox name="terms" class="required" />
 				</div>						
 				

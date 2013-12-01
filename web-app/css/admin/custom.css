@@ -293,3 +293,90 @@ a:hover.icon-5-on	{
 .clickme {
 	cursor: pointer;
 }
+
+a.icon-info {
+	width: 24px;
+	height: 24px;
+}
+.icon-info {
+    display: block;
+    float: left;
+    margin: 0 0 0 8px;	
+	background: url(../../images/admin/info.png)
+}
+
+a.icon-attachment {
+	width: 24px;
+	height: 24px;
+}
+
+a.icon-attachment:hover {
+	background: url(../../images/admin/attachment-over.png)
+}
+
+.icon-attachment-on {
+    display: block;
+    float: left;
+    margin: 0 0 0 8px;	
+	background: url(../../images/admin/attachment-on.png)
+}
+
+.icon-attachment-off {
+    display: block;
+    float: left;
+    margin: 0 0 0 8px;	
+	background: url(../../images/admin/attachment-off.png)
+}
+
+#attachmentForm {
+	font-size: 12px;
+	border-top: 2px solid #DDDDDD;	
+	padding: 10px 10px 5px 10px;
+	overflow: auto;
+}
+
+#attachmentForm label {
+	min-width: 50px;
+	width: 50px;
+}
+
+#attachmentForm p, #attachmentForm h4 {
+	margin-bottom: 10px;
+}
+
+#attachmentlist {
+	width: 100%;
+	font-size: 12px;
+}
+
+#attachmentlist td {
+	border: 1px solid #D2D2D2;
+	padding: 3px 5px 3px 5px;
+}
+
+#attachmentlist tr.alternate-row {
+	background-color: #ffffff;
+}
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    9000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 55, 55, 55, .8 ) 
+                url('../../images/ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading .modal {
+	z-index: 8000;
+    display: block;
+}

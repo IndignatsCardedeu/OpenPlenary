@@ -489,6 +489,10 @@
 	<div class="clear">&nbsp;</div>
 </div>
 <!-- end footer -->
+	<div id="modalLayer" class="modal">
+		HOLA
+	</div>
+		
 	<r:layoutResources />
 </body>
 </html>
