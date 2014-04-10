@@ -36,7 +36,7 @@ class MainController {
 		
 		def parties = PoliticalParty.list(sort: "name")		
 		def affinities
-		
+			
 		if (springSecurityService.currentUser) 
 			affinities = affinityService.getUserAffinity(springSecurityService.currentUser)
 		
@@ -69,6 +69,7 @@ class MainController {
 		PoliticalParty party = PoliticalParty.get(params.id)
 
 		def affinities = affinityService.getPartyAffinity(party.id)
+		def acceptance = affinityService.getPartyPopularAcceptance()
 		
 		def proposals = PartyProposal.createCriteria().list() {
 							eq("party", party)
@@ -128,7 +129,8 @@ class MainController {
 			voteUpList: voteUpList, 
 			voteDownList: voteDownList,
 			proposals: proposals,
-			affinities: affinities
+			affinities: affinities,
+			acceptance: acceptance
 		]
 	}
 	

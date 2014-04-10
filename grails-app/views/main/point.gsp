@@ -5,7 +5,7 @@
 		<title> :: ${item.name}</title>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$(".meeting_point_content").expander({
+				$("#meeting_point_content_desc").expander({
 					slicePoint: ${grailsApplication.config.grails.openplenary.subject.slicePoint},
 					expandText: '<g:message code="main.read.more"/>',
 					userCollapseText: '<g:message code="main.read.less"/>'
@@ -87,7 +87,9 @@
 								</ul>
 							</div>						 
 						</g:if>
-						<op:setMinutesLink text="${item.description}" minutesLink="${item.meeting.officialMinutesUrl}"/>						
+						<div id="meeting_point_content_desc">
+							<op:setMinutesLink text="${item.description}" minutesLink="${item.meeting.officialMinutesUrl}"/>
+						</div>						
 					</div>
 					<div class="meeting_point_agreements">
 					 	<op:setMinutesLink text="${item.agreements}" minutesLink="${item.meeting.officialMinutesUrl}"/>

@@ -19,7 +19,7 @@
 			<div id="logo">
 				<a href="${resource(dir:'/')}">
 				<g:message code="main.app.name"/>
-				${grailsApplication.config.grails.openplenary.name}
+				<span id="plenary_name">${grailsApplication.config.grails.openplenary.name}</span>
 				</a>
 			</div>
 		    <div id="menu">

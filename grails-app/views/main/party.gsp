@@ -13,7 +13,20 @@
 		    		${party.description}
 	    		</div>
 	    	</div> 	
-	    	<div id="affinities">
+	    	<div class="affinities">
+	    		<h2><g:message code="main.acceptance.party"/></h2>
+	    		<g:each in="${acceptance}" var="item">
+	    			<div class="affinity_block
+	    				<g:if test="${item.partyId==party.id}">
+	    					selected
+	    				</g:if> 
+	    			">
+	    				<g:link controller="main" action="party" id="${item.partyId}"><img src="${createLink(controller:'files', action:'logo', id: item.partyLogo)}" alt="${item.partyName}" title="${item.partyName}"/></g:link> 
+	    				${item.value}% 
+	    			</div>
+	    		</g:each>
+	    	</div>	    	
+	    	<div class="affinities">
 	    		<h2><g:message code="main.affinity.party"/></h2>
 	    		<g:each in="${affinities}" var="item">
 	    			<div class="affinity_block">
@@ -22,7 +35,7 @@
 	    			</div>
 	    		</g:each>
 	    	</div>
-			<div id="last_meetings">
+			<div class="info_block">
 				<div class="party_info_block">
 					<h2><g:message code="party.proposals.author"/></h2>
 					<ul>
@@ -39,7 +52,7 @@
 					<tc:tagCloud tags="${tags}" controller="tag" action="party" paramName="tag" />		
 				</div>					
 			</div>
-			<div id="last_meetings">				
+			<div class="info_block">				
 				<div class="party_info_block">
 					<h2><g:message code="party.proposals.voteUp"/></h2>
 					<ul>

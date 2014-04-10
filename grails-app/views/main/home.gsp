@@ -70,7 +70,7 @@
 			</div>
 		</div>
 		<sec:ifLoggedIn>
-		   	<div id="affinities" class="affinities_home">
+		   	<div id="affinities" class="affinities affinities_home">
 		   		<h2><g:message code="main.affinity.user"/></h2>
 	    		<g:each in="${affinities}" var="item">
 	    			<div class="affinity_block">

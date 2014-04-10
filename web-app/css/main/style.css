@@ -272,6 +272,11 @@ textarea {
 	text-align: center;
 }
 
+#plenary_name {
+	display: block;
+	font-size: 26px;
+}
+
 #content {
 	color: #333333;
 	overflow: auto;
@@ -835,21 +840,21 @@ h3{
     padding: 0;
 }
 
-#last_meetings h2 {
+#last_meetings h2, .info_block h2  {
 	margin-bottom: 10px;
 }
 
-#last_meetings ul {
+#last_meetings ul, .info_block ul {
 	margin: 0;
 	padding: 0;
 }
 
-#last_meetings li {
+#last_meetings li, .info_block li {
 	margin: auto;
 	min-height: 25px;
 }
 
-#last_meetings img {
+#last_meetings img, .info_block img {
 	float: left;
 	margin-right: 10px;
 }
@@ -1009,19 +1014,26 @@ iframe {
 	background-image: url("../../images/main/social.png");
 }
 
-#affinities {
+.affinities {
 	background-color: #FFF7CF;
-	padding: 10px 0 7px 10px;
+	padding: 5px 0 5px 10px;
+	margin-bottom: 10px;
 	overflow: auto;
 }
 
-#affinities h2 {
+.affinities .selected {
+	background: #FDD60F;
+}
+
+.affinities h2 {
 	float:left;
-	margin: 7px 10px 10px 10px;
+	margin: 10px 10px 10px 10px !important;
+	width: 100px;
 }
 
 .affinity_block {
 	margin: 0 10px 0 10px;
+	padding: 3px 2px 3px 2px;
 	width: 30px;
 	float: left;
 	font-size: 10px;
@@ -1037,6 +1049,15 @@ iframe {
 	margin: 3px 10px 0px 10px !important;
 	font-size: 12px;
 	width: 100px;
+}
+
+.info_block {
+	margin: 0 0 15px 0;
+	overflow: auto;
+}
+
+.info_block a:hover {
+	text-decoration: underline;
 }
 
 #related {
