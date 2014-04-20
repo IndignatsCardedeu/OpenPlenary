@@ -146,9 +146,6 @@ class AffinityService {
 				def absQuery = session.createSQLQuery(query2)
 				absQuery.setParameter("partyId", it.partyId, Hibernate.LONG)
 				double absTotal = absQuery.uniqueResult().intValue() / 2
-
-				println(it.partyName + ": [ " + it.value + ", " + absTotal + " ] - [" + (it.value * 100 / votes) + ", " + ((it.value + absTotal) * 100 / votes) + " ]")
-				
 				it.value = (it.value + absTotal) * 100 / votes				
 			}
 			

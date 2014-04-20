@@ -83,7 +83,8 @@ class MainController {
 									order("startDate", "desc")
 								}
 								order("id", "desc")
-							}						
+							}	
+							maxResults(10)
 						}
 		
 		def voteUpList = PartyProposal.createCriteria().list() {
@@ -95,7 +96,7 @@ class MainController {
 									order("startDate", "desc")
 								}
 								order("id", "desc")
-							}						
+							}							
 						}
 		
 		def tags = [:]
@@ -117,11 +118,9 @@ class MainController {
 										order("startDate", "desc")
 									}
 									order("id", "desc")
-								}						
+								}	
+								maxResults(10)
 							}
-		if (voteDownList.size()>10) voteDownList = voteDownList[0..9]
-		
-		if (proposals.size()>5) proposals = proposals[0..9]
 		
 		[
 			party: party, 
