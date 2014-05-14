@@ -1,0 +1,173 @@
+ul li {
+	background-image: url("../../images/main/bullet_violet.png");
+}
+
+.meeting_point_official_results .show {
+	background-image: url("../../images/main/down_arrow_violet.png");	
+}
+
+.meeting_point_official_results .hide {
+	background-image: url("../../images/main/up_arrow_violet.png");
+}
+
+#faq-box .open {
+	background-image: url("../../images/main/down_arrow_violet.png");
+}
+
+#faq-box .close {
+	background-image: url("../../images/main/up_arrow_violet.png");
+}
+
+.button {	
+	background-color: #C7A8EA;
+}
+
+.button:hover {
+	background-color: #B08CEA;
+}
+
+#menu ul li:hover {
+	border-bottom: 6px solid #C7A8EA;	
+}
+
+#menu ul li.current{
+	border-bottom: 6px solid #C7A8EA;
+}
+
+#logo {
+	background-color: #C7A8EA;
+}
+
+#current_meeting_points {
+	background-color: #DDCEEF;	
+}
+
+.meeting_point_results {
+    border: 1px solid #B08CEA;
+    background-color: #C7A8EA;
+}
+
+.meeting_point_vote_text {
+	background-color: #B08CEA;
+}
+
+.date {
+	background-color: #C7A8EA;
+}
+
+.last_meeting_block {
+	background-color: #EDE1F4;
+}
+
+.meeting-name {	
+	border-bottom: 2px solid #C7A8EA;
+}
+
+.meeting-name:hover {
+	border-bottom: 2px solid #B08CEA;
+}
+
+.meeting-name:hover .date {
+	background-color: #B08CEA;
+}
+
+.party-name {
+	border-bottom: 2px solid #C7A8EA;
+}
+
+.image {
+	background-color: #C7A8EA;
+}
+
+.box-a {
+	background-color: #DDCEEF;
+}
+
+.box-b {
+	background-color: #EDE1F4;	
+}
+
+#subjects-relevant-list h2 {
+	background-color: #C7A8EA;
+}
+
+#meetings_box #subjects-list {
+	background-color: #DDCEEF;
+}
+
+.meeting_point_area {
+	background-color: #DDCEEF;
+}
+
+.meeting_point_official_results {
+	background-color: #EDE1F4;
+}
+
+.meeting_point_official_results:hover {
+	background-color: #DEC0ED;
+}
+
+h3{
+	border-bottom: 6px solid #DDCEEF;
+}
+
+.meeting_point_area_buttons {
+	background-color: #DDCEEF;
+	border-top: 1px dotted #C7A8EA;
+}
+
+.user_comment {		
+	border-bottom: 1px solid #DDCEEF;	
+}
+
+.user_comment_info {
+	background-color: #EDE1F4;
+}
+
+.party_info_block {
+    background-color: #EDE1F4;
+}
+
+#pagebrowser {
+	border: 1px solid #C7A8EA;
+	background-color: #EDE1F4;
+}
+
+#pagebrowser a {
+	border: 1px solid #C7A8EA;
+	background-color: #C7A8EA;
+}
+
+#pagebrowser a:hover {
+	background-color: #B08CEA;
+}
+
+#pagebrowser .currentStep {
+	border: 1px solid #C7A8EA;	
+}
+
+.read-more a, .read-less a{
+	border: 1px solid #C7A8EA;
+	background-color: #EDE1F4;
+}
+
+.read-more a:hover, .read-less a:hover {
+	background-color: #DEC0ED;
+}
+
+.affinities {
+	background-color: #EDE1F4;
+}
+
+.affinities .selected {
+	background: #C7A8EA;
+}
+
+.affinities_home {	
+	background-color: #DDCEEF !important;
+}
+
+#related {
+	background-color:#DEC0ED;
+	border:1px solid #C7A8EA;	
+}

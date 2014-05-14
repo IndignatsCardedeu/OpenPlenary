@@ -144,6 +144,7 @@ grails.plugins.springsecurity.facebook.domain.classname='org.mayfifteen.openplen
 //Open Plenary Config
 grails.openplenary.mail.from = 'somebody@foo.bar'
 grails.openplenary.layout = 'main'
+grails.openplenary.style = 'yellow'
 grails.openplenary.name = 'Foo'
 grails.openplenary.voting.allowAnonymous = false
 grails.openplenary.voting.maxAnonymousVotes = 5

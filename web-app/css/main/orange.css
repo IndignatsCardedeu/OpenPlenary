@@ -1,0 +1,173 @@
+ul li {
+	background-image: url("../../images/main/bullet_orange.png");
+}
+	
+.meeting_point_official_results .show {
+	background-image: url("../../images/main/down_arrow_orange.png");	
+}
+
+.meeting_point_official_results .hide {
+	background-image: url("../../images/main/up_arrow_orange.png");
+}
+
+#faq-box .open {
+	background-image: url("../../images/main/down_arrow_orange.png");
+}
+
+#faq-box .close {
+	background-image: url("../../images/main/up_arrow_orange.png");
+}
+
+.button {	
+	background-color: #F9B95E;
+}
+
+.button:hover {
+	background-color: #F79813;
+}
+
+#menu ul li:hover {
+	border-bottom: 6px solid #F9B95E;	
+}
+
+#menu ul li.current{
+	border-bottom: 6px solid #F9B95E;
+}
+
+#logo {
+	background-color: #F9B95E;
+}
+
+#current_meeting_points {
+	background-color: #FFD191;	
+}
+
+.meeting_point_results {
+    border: 1px solid #F79813;
+    background-color: #F9B95E;
+}
+
+.meeting_point_vote_text {
+	background-color: #F79813;
+}
+
+.date {
+	background-color: #F9B95E;
+}
+
+.last_meeting_block {
+	background-color: #FFEBD1;
+}
+
+.meeting-name {	
+	border-bottom: 2px solid #F9B95E;
+}
+
+.meeting-name:hover {
+	border-bottom: 2px solid #F79813;
+}
+
+.meeting-name:hover .date {
+	background-color: #F79813;
+}
+
+.party-name {
+	border-bottom: 2px solid #F9B95E;
+}
+
+.image {
+	background-color: #F9B95E;
+}
+
+.box-a {
+	background-color: #FFD191;
+}
+
+.box-b {
+	background-color: #FFEBD1;	
+}
+
+#subjects-relevant-list h2 {
+	background-color: #F9B95E;
+}
+
+#meetings_box #subjects-list {
+	background-color: #FFD191;
+}
+
+.meeting_point_area {
+	background-color: #FFD191;
+}
+
+.meeting_point_official_results {
+	background-color: #FFEBD1;
+}
+
+.meeting_point_official_results:hover {
+	background-color: #F7D4AD;
+}
+
+h3{
+	border-bottom: 6px solid #FFD191;
+}
+
+.meeting_point_area_buttons {
+	background-color: #FFD191;
+	border-top: 1px dotted #F9B95E;
+}
+
+.user_comment {		
+	border-bottom: 1px solid #FFD191;	
+}
+
+.user_comment_info {
+	background-color: #FFEBD1;
+}
+
+.party_info_block {
+    background-color: #FFEBD1;
+}
+
+#pagebrowser {
+	border: 1px solid #F9B95E;
+	background-color: #FFEBD1;
+}
+
+#pagebrowser a {
+	border: 1px solid #F9B95E;
+	background-color: #F9B95E;
+}
+
+#pagebrowser a:hover {
+	background-color: #F79813;
+}
+
+#pagebrowser .currentStep {
+	border: 1px solid #F9B95E;	
+}
+
+.read-more a, .read-less a{
+	border: 1px solid #F9B95E;
+	background-color: #FFEBD1;
+}
+
+.read-more a:hover, .read-less a:hover {
+	background-color: #F7D4AD;
+}
+
+.affinities {
+	background-color: #FFEBD1;
+}
+
+.affinities .selected {
+	background: #F9B95E;
+}
+
+.affinities_home {	
+	background-color: #FFD191 !important;
+}
+
+#related {
+	background-color:#F7D4AD;
+	border:1px solid #F9B95E;	
+}

@@ -20,6 +20,7 @@ package org.mayfifteen.openplenary
 
 import grails.plugins.springsecurity.Secured
 
+import org.apache.commons.lang.RandomStringUtils
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
 class WebUserController {
@@ -92,10 +93,10 @@ class WebUserController {
 		
 		String mailTo = params.email
 		
-		if (grailsApplication.config.grails.openplenary.encodeEmail) 
-			webUser.email = springSecurityService.encodePassword(webUser.email)
-		
 		if (simpleCaptchaService.validateCaptcha(params.captcha)){
+			if (grailsApplication.config.grails.openplenary.encodeEmail)
+			webUser.email = springSecurityService.encodePassword(webUser.email)
+			
 			webUser.validate =  UUID.randomUUID().toString()
 	
 			if (!webUser.save(flush:true)) {
@@ -109,7 +110,7 @@ class WebUserController {
 			
 			this.mail(
 				message(code:"user.signup.confirmation.mail.subject", args:[grailsApplication.config.grails.openplenary.name]),
-				message(code:"user.signup.confirmation.mail.body", args:[grailsApplication.config.grails.serverURL, webUser.validate]), 
+				message(code:"user.signup.confirmation.mail.body", args:[grailsApplication.config.grails.serverURL, webUser.validate, grailsApplication.config.grails.openplenary.name]), 
 				mailTo)
 	
 			flash.message = message(code: 'user.created.message', args: [message(code: 'user.label', default: 'User'), webUser.id])
@@ -129,6 +130,64 @@ class WebUserController {
 		}else{
 			redirect(controller: "main", action: "home")
 		}				
+	}
+	
+	def remember(){
+		String email = params.r_email
+		String encEmail = email
+				
+		if (params.r_email || params.r_username){
+			if (grailsApplication.config.grails.openplenary.encodeEmail && email){
+				encEmail = springSecurityService.encodePassword(email)
+			}
+			
+			if (params.key){
+				User user = User.findByValidateAndEmail(params.key, encEmail)
+				
+				if (user){
+					String charset = (('A'..'Z') + ('0'..'9') + ('a'..'z')).join()
+					String password = RandomStringUtils.random(9, charset.toCharArray())
+					user.password = password			
+					user.validate =  UUID.randomUUID().toString()
+					
+					if (user.save(flush:true)){
+						this.mail(
+							message(code:"user.signup.remember.done.mail.subject", args:[grailsApplication.config.grails.openplenary.name]),
+							message(code:"user.signup.remember.done.mail.body", args:[user.username, password, grailsApplication.config.grails.openplenary.name]),
+							email)
+					}
+									
+				}
+					
+				flash.message = message(code: 'user.remember.done.message')
+				render(view: "remember_step_2", model: [userInstance: user])
+			}else{
+				String username = params.r_username
+				
+				User user = null
+				if (grailsApplication.config.grails.openplenary.encodeEmail){
+					user = User.findByEmail(encEmail)
+				}else if (params.r_email){
+					user = User.findByEmail(encEmail)
+				}else{
+					user = User.findByUsername(username)
+					email = user.email
+				}
+				
+				if (user){
+					user.validate =  UUID.randomUUID().toString()
+					if (user.save(flush:true)) {
+						this.mail(
+							message(code:"user.signup.remember.mail.subject", args:[grailsApplication.config.grails.openplenary.name]),
+							message(code:"user.signup.remember.mail.body", args:[grailsApplication.config.grails.serverURL, user.validate, email, grailsApplication.config.grails.openplenary.name]),
+							email)
+					}				
+				}
+					
+				flash.message = message(code: 'user.remember.message')
+				render(view: "remember_step_1", model: [userInstance: user])
+			}
+		}
 	}
 	
 	private void mail(mailSubject, mailBody, mailTo){

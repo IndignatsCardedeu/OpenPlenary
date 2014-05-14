@@ -1,0 +1,173 @@
+ul li {
+	background-image: url("../../images/main/bullet_brown.png");
+}
+
+.meeting_point_official_results .show {
+	background-image: url("../../images/main/down_arrow_brown.png");	
+}
+
+.meeting_point_official_results .hide {
+	background-image: url("../../images/main/up_arrow_brown.png");
+}
+
+#faq-box .open {
+	background-image: url("../../images/main/down_arrow_brown.png");
+}
+
+#faq-box .close {
+	background-image: url("../../images/main/up_arrow_brown.png");
+}
+
+.button {	
+	background-color: #EAC7A8;
+}
+
+.button:hover {
+	background-color: #EAB08C;
+}
+
+#menu ul li:hover {
+	border-bottom: 6px solid #EAC7A8;	
+}
+
+#menu ul li.current{
+	border-bottom: 6px solid #EAC7A8;
+}
+
+#logo {
+	background-color: #EAC7A8;
+}
+
+#current_meeting_points {
+	background-color: #EFDDCE;	
+}
+
+.meeting_point_results {
+    border: 1px solid #EAB08C;
+    background-color: #EAC7A8;
+}
+
+.meeting_point_vote_text {
+	background-color: #EAB08C;
+}
+
+.date {
+	background-color: #EAC7A8;
+}
+
+.last_meeting_block {
+	background-color: #F4EDE1;
+}
+
+.meeting-name {	
+	border-bottom: 2px solid #EAC7A8;
+}
+
+.meeting-name:hover {
+	border-bottom: 2px solid #EAB08C;
+}
+
+.meeting-name:hover .date {
+	background-color: #EAB08C;
+}
+
+.party-name {
+	border-bottom: 2px solid #EAC7A8;
+}
+
+.image {
+	background-color: #EAC7A8;
+}
+
+.box-a {
+	background-color: #EFDDCE;
+}
+
+.box-b {
+	background-color: #F4EDE1;	
+}
+
+#subjects-relevant-list h2 {
+	background-color: #EAC7A8;
+}
+
+#meetings_box #subjects-list {
+	background-color: #EFDDCE;
+}
+
+.meeting_point_area {
+	background-color: #EFDDCE;
+}
+
+.meeting_point_official_results {
+	background-color: #F4EDE1;
+}
+
+.meeting_point_official_results:hover {
+	background-color: #EDDEC0;
+}
+
+h3{
+	border-bottom: 6px solid #EFDDCE;
+}
+
+.meeting_point_area_buttons {
+	background-color: #EFDDCE;
+	border-top: 1px dotted #EAC7A8;
+}
+
+.user_comment {		
+	border-bottom: 1px solid #EFDDCE;	
+}
+
+.user_comment_info {
+	background-color: #F4EDE1;
+}
+
+.party_info_block {
+    background-color: #F4EDE1;
+}
+
+#pagebrowser {
+	border: 1px solid #EAC7A8;
+	background-color: #F4EDE1;
+}
+
+#pagebrowser a {
+	border: 1px solid #EAC7A8;
+	background-color: #EAC7A8;
+}
+
+#pagebrowser a:hover {
+	background-color: #EAB08C;
+}
+
+#pagebrowser .currentStep {
+	border: 1px solid #EAC7A8;	
+}
+
+.read-more a, .read-less a{
+	border: 1px solid #EAC7A8;
+	background-color: #F4EDE1;
+}
+
+.read-more a:hover, .read-less a:hover {
+	background-color: #EDDEC0;
+}
+
+.affinities {
+	background-color: #F4EDE1;
+}
+
+.affinities .selected {
+	background: #EAC7A8;
+}
+
+.affinities_home {	
+	background-color: #EFDDCE !important;
+}
+
+#related {
+	background-color:#EDDEC0;
+	border:1px solid #EAC7A8;	
+}

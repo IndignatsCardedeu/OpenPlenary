@@ -1,9 +1,8 @@
 body {
-	background-color: #FFFFFF;
 	margin: 0;
 	padding: 0;
 	font-family: "Droid Sans", Arial, Helvetica, sans-serif;
-	
+	background-color: #FFFFFF;	
 }
 
 a img {
@@ -25,7 +24,6 @@ ul {
 
 ul li {
 	background-repeat: no-repeat;	
-	background-image: url("../../images/main/bullet.png");
 	background-position: left;
 	padding: 10px 0 0 12px;
 	margin-bottom: 8px;	
@@ -37,13 +35,13 @@ ol li {
 			
 }
 
+table td{
+	border: 1px solid #666666;
+}
+
 table p {
 	margin:0;
 	padding:0;
-}
-
-table td{
-	border: 1px solid #666666;
 }
 
 .message {
@@ -79,13 +77,13 @@ label.error {
 }
 
 a {
-	
 	color: #333333;	
 }
 
 #messagebody {
 	padding: 20px 10px 20px 10px;
 	float: left;
+	width: 650px;
 }
 
 #messagebody a {
@@ -107,10 +105,6 @@ a {
 	text-decoration: underline;
 }
 
-#login-area .userForms {    
-    min-height: 300px;	
-}
-
 #login-providers-list {
 	border-right: 1px solid #666666;
 	padding: 0 0 30px 40px;
@@ -120,8 +114,14 @@ a {
 	border-right: 1px solid #666666;	
 }
 
+#remember-area {
+	padding-top: 30px;
+	border-right: 1px solid #666666;
+	margin-bottom: 20px;
+}
+
 .userForms {
-    margin: 0 0 20px 30px;
+    margin: 0 0 0 30px;
     padding-right: 20px;    
 }
 
@@ -164,7 +164,6 @@ textarea {
 
 .button {	
 	padding: 10px 15px 10px 15px;
-	background-color: #FDD60F;
 	font-size: 14px;
 	font-weight: bold;
 	text-align: bold;
@@ -191,10 +190,6 @@ textarea {
 
 .warning:hover {
 	background-color: #FF0000 !important;
-}
-
-.button:hover {
-	background-color: #FCBD0F;
 }
 
 #container {
@@ -240,14 +235,6 @@ textarea {
 	color: #707070;
 }
 
-#menu ul li:hover {
-	border-bottom: 6px solid #FDD60F;	
-}
-
-#menu ul li.current{
-	border-bottom: 6px solid #FDD60F;
-}
-
 #userbox {
 	float: right;
 	height: 86px;
@@ -262,7 +249,6 @@ textarea {
 }
 
 #logo {
-	background-color: #FDD60F;
 	font-size: 30px;
 	font-weight: bold;
 	float: left;
@@ -280,7 +266,7 @@ textarea {
 #content {
 	color: #333333;
 	overflow: auto;
-	padding-top: 25px;
+	padding: 25px 0 10px 0;
 }
 
 #content h2 {
@@ -325,7 +311,6 @@ textarea {
 #current_meeting_points {
 	padding: 25px 20px 25px 20px;
 	float: right;
-	background-color: #FEEF9F;
 	width: 369px;	
 }
 
@@ -358,8 +343,6 @@ textarea {
 	float: left;
     margin-right: 10px;
     width: 50px;
-    border: 1px solid #FCBD0F;
-    background-color: #FDD60F;
     padding: 3px;
 }
 
@@ -378,7 +361,6 @@ textarea {
 	text-transform: uppercase;
 	margin-top: 3px;
 	color: #444444;
-	background-color: #FCBD0F;
 }
 
 .meeting_point .vote {
@@ -425,7 +407,6 @@ textarea {
 }
 
 .date {
-	background-color: #FDD60F;
 	padding: 5px 10px 5px 10px;
 	font-style: normal;		
 	font-weight: bold;
@@ -443,7 +424,6 @@ textarea {
 }
 
 .last_meeting_block {
-	background-color: #FFF7CF;
 	width: 276px;	
 	float: left;
 	margin: 0;	
@@ -519,17 +499,8 @@ textarea {
 }
 
 .meeting-name {	
-	border-bottom: 2px solid #FDD60F;
 	height: 24px;
 	font-size: 16px;		
-}
-
-.meeting-name:hover {
-	border-bottom: 2px solid #FCBD0F;
-}
-
-.meeting-name:hover .date {
-	background-color: #FCBD0F;
 }
 
 .meeting .meeting-tags a {
@@ -547,13 +518,11 @@ textarea {
 }
 
 .party-name {
-	border-bottom: 2px solid #FDD60F;
 	height: 28px;
 	text-transform: uppercase;
 }
 
 .image {
-	background-color: #FDD60F;
 	padding: 15px 10px 0px 10px;
 	font-style: normal;		
 	font-weight: bold;
@@ -587,7 +556,6 @@ textarea {
 .box-a {
 	width: 198px;	
 	margin-bottom: 15px;
-	background-color: #FEEF9F;
 	padding: 10px 15px 10px 15px;
 }
 
@@ -620,7 +588,6 @@ textarea {
 	width: 208px;
 	min-height: 200px;
 	margin-bottom: 15px;
-	background-color: #FFF7CF;
     padding: 5px 10px;	
 }
 
@@ -632,7 +599,6 @@ textarea {
 }
 
 #subjects-relevant-list h2 {
-	background-color: #FDD60F;
 	padding: 7px 0 7px 12px;
 	margin: 0;
 	font-size: 14px;
@@ -647,23 +613,13 @@ textarea {
 	padding: 10px 20px 10px 20px;
 }
 
-#meetings_box #subjects-list {
-	background-color: #FEEF9F;
-}
-
 .meeting_point_area {
-	background-color: #FEEF9F;
 	min-height: 70px;
 }
 
 .meeting_point_official_results {
-	background-color: #FFF7CF;
 	padding: 5px 10px 5px 10px;	
 	overflow: auto;
-}
-
-.meeting_point_official_results:hover {
-	background-color: #FFFAE5;
 }
 
 .show_thumbs {
@@ -678,14 +634,6 @@ textarea {
 	font-weight: bold;
 	font-size: 14px;
 	text-transform: uppercase;
-}
-
-.meeting_point_official_results .show {
-	background-image: url("../../images/main/down_arrow.png");	
-}
-
-.meeting_point_official_results .hide {
-	background-image: url("../../images/main/up_arrow.png");
 }
 
 #meetings-box .meeting_point {
@@ -719,7 +667,6 @@ textarea {
 
 h3{
 	font-size: 16px;
-	border-bottom: 6px solid #FEEF9F;
 }
 
 .show_results {
@@ -730,8 +677,6 @@ h3{
 	padding: 10px 10px 0 0;	
 	text-align: right;
 	height: 25px;
-	background-color: #FEEF9F;
-	border-top: 1px dotted #FDD60F;
 	margin-left: 70px;
 }
 
@@ -744,17 +689,12 @@ h3{
 	text-align: right;
 }
 
-.user_comment {		
-	border-bottom: 1px solid #FEEF9F;	
-}
-
 .user_comment p {
 	padding: 5px 10px 0px 10px;
 }
 
 .user_comment_info {
 	text-align: right;
-	background-color: #FFF7CF;
 	padding: 5px 10px 0px 10px;
 }
 
@@ -802,15 +742,6 @@ h3{
 	background-repeat: no-repeat;
 	background-position: right;	
 }
-
-#faq-box .open {
-	background-image: url("../../images/main/down_arrow.png");
-}
-
-#faq-box .close {
-	background-image: url("../../images/main/up_arrow.png");
-}	
-
 
 #faq-box p {
 	font-size: 12px;
@@ -879,7 +810,6 @@ h3{
 
 
 .party_info_block {
-    background-color: #FFF7CF;
     float: left;
     margin: 0 10px 0 0;
     padding: 25px 20px;
@@ -917,24 +847,15 @@ h3{
 #pagebrowser {
 	margin-left: 5px;
 	padding: 10px;
-	border: 1px solid #FDD60F;
-	background-color: #FFF7CF;
 	text-align: right;
 }
 
 #pagebrowser a {
-	border: 1px solid #FDD60F;
 	padding: 3px 5px 3px 5px;
 	margin-right: 3px;	
-	background-color: #FDD60F;
-}
-
-#pagebrowser a:hover {
-	background-color: #FCBD0F;
 }
 
 #pagebrowser .currentStep {
-	border: 1px solid #FDD60F;	
 	padding: 3px 5px 3px 5px;
 	margin-right: 3px;	
 	background-color: #FFFFFF;
@@ -942,8 +863,6 @@ h3{
 
 .read-more a, .read-less a{
 	display: block;
-	border: 1px solid #FDD60F;
-	background-color: #FFF7CF;
 	padding: 3px 10px 3px 5px;
 	text-align: right;
 	margin-top: 10px;
@@ -952,7 +871,6 @@ h3{
 }
 
 .read-more a:hover, .read-less a:hover {
-	background-color: #FFFAE5;
 	text-decoration: underline; 
 }
 
@@ -1015,14 +933,9 @@ iframe {
 }
 
 .affinities {
-	background-color: #FFF7CF;
 	padding: 5px 0 5px 10px;
 	margin-bottom: 10px;
 	overflow: auto;
-}
-
-.affinities .selected {
-	background: #FDD60F;
 }
 
 .affinities h2 {
@@ -1041,7 +954,6 @@ iframe {
 }
 
 .affinities_home {	
-	background-color: #FEEF9F !important;
 	border-bottom: 1px solid #666666
 }
 
@@ -1064,8 +976,6 @@ iframe {
 	font-size: 12px;
 	font-weight: bold;
 	float:right;	
-	background-color:#FFFAE5;
-	border:1px solid #FDD60F;
 	margin:15px 0 0 15px;
 	padding: 5px 10px 5px 10px;
 	width:180px;	

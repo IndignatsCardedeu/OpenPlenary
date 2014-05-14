@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><g:message code='main.app.name'/> - ${grailsApplication.config.grails.openplenary.name} <g:layoutTitle /></title>
 	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css/main', file: 'style.css')}" media="screen" />
+	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css/main')}/${grailsApplication.config.grails.openplenary.style}.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'colorbox.css')}" media="screen" />	
 	<g:javascript library="jquery" />					
     <r:layoutResources />	    

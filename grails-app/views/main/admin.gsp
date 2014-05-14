@@ -13,16 +13,20 @@
 			<div id="dashboard_actions_container">
 				<div class="dashboard_action" onclick="window.location='${resource(dir: 'meeting')}'">
 					<img src="${resource(dir: 'images/admin', file: 'meeting.png')}"/>
-					Plenaris
+					<g:message code="admin.menu.meetings"/>
 				</div>	
 				<div class="dashboard_action" onclick="window.location='${resource(dir: 'politicalParty')}'">
 					<img src="${resource(dir: 'images/admin', file: 'politicalparty.png')}"/>
-					Partits Polítics
+					<g:message code="admin.menu.parties"/>
 				</div>	
 				<div class="dashboard_action" onclick="window.location='${resource(dir: 'user')}'">
 					<img src="${resource(dir: 'images/admin', file: 'user.png')}"/>
-					Usuaris
-				</div>							
+					<g:message code="admin.menu.users"/>
+				</div>				
+				<div class="dashboard_action" onclick="window.location='${resource(dir: 'comment')}'">
+					<img src="${resource(dir: 'images/admin', file: 'comments.png')}"/>
+					<g:message code="admin.menu.comments"/>
+				</div>	
 			</div>
 		</div>
 	</body>

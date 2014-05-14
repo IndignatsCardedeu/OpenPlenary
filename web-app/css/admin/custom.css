@@ -5,7 +5,7 @@
 
 .dashboard_action {
 	cursor: pointer;
-	margin-left: 200px;	
+	margin: 20px 0 0 100px;	
 	width: 100px;
 	height: 100px;
 	float: left;

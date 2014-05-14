@@ -26,14 +26,16 @@ import org.springframework.dao.DataIntegrityViolationException
 @Secured(['ROLE_ADMIN'])
 class CommentController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
     def index() {
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+		if (!params.sort){
+			params.order = "desc"
+			params.sort = "id"
+		}
         [commentInstanceList: Comment.list(params), commentInstanceTotal: Comment.count()]
     }
 
@@ -49,7 +51,7 @@ class CommentController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'comment.label', default: 'Comment'), commentInstance.id])
-        redirect(action: "show", id: commentInstance.id)
+        redirect(action: "list", id: commentInstance.id)
     }
 
     def show(Long id) {
@@ -100,7 +102,7 @@ class CommentController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'comment.label', default: 'Comment'), commentInstance.id])
-        redirect(action: "show", id: commentInstance.id)
+        redirect(action: "list", id: commentInstance.id)
     }
 
     def delete(Long id) {

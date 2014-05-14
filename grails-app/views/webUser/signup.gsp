@@ -8,6 +8,10 @@
 		<jq:plugin name="validate"></jq:plugin>				
 		<script type="text/javascript">
 			$(document).ready(function(){
+				$.validator.addMethod("mailOrUser", function(value) {				
+					return ($("#r_username").val()!="" || $("#r_email").val()!="");
+				}, "<g:message code="user.remember.error.mailOrUser"/>");
+				
 				$("#registerForm").validate({
 					rules: {
 						username: "required",
@@ -22,7 +26,7 @@
 						}
 					},
 					messages: {
-						terms: "Has de llegir i acceptar les condicions",
+						terms: "<g:message code="user.terms.error.notread"/>",
 						username: "<g:message code="user.username.error.required" />",
 						password: "<g:message code="user.password.error.required" />",
 						confirm: {
@@ -43,6 +47,29 @@
 						j_password: "<g:message code="user.login.password.error.required"/>"
 					}					
 				});		
+				
+				$("#rememberForm").validate({
+				<g:if test="${grailsApplication.config.grails.openplenary.encodeEmail==false}">	
+						rules: {
+							r_username: "mailOrUser",
+							r_email: {
+								email: true,
+								mailOrUser: true
+							}
+						},
+				</g:if>
+				<g:else>
+						rules: {
+							r_email: {
+								email: true,
+								required: true
+							}
+						},
+				</g:else>						
+					messages: {
+						r_email: "<g:message code="user.email.error.notvalid"/>"
+					}				
+				});					
 
 				$(".overlay").colorbox({inline:true, width:"50%"});		
 			});				
@@ -57,7 +84,7 @@
 		</g:if>		
 		<div id="login-area">
 			<div id="login-providers">
-				<h2>Accedeix amb...</h2>
+				<h2><g:message code="user.social.login.label"/></h2>
 				<div id="login-providers-list">
 					<facebookAuth:connect />
 				</div>
@@ -85,7 +112,7 @@
 					</div>			
 							
 					<input type='submit' id="submit" class="button" value='${message(code: "springSecurity.login.button")}'/>					
-				</form>
+				</form>				
 				<script type='text/javascript'>
 					<!--
 					(function() {
@@ -94,6 +121,28 @@
 					// -->
 				</script>	
 			</div>
+			<div id="remember-area">
+				<h2><g:message code="user.remember.label"/></h2>
+				<g:form controller="webUser" action="remember" name="rememberForm" class="userForms">
+					<g:if test="${grailsApplication.config.grails.openplenary.encodeEmail==false}">
+						<p class="tip"><g:message code="user.remember.tip.label" /></p>
+						<div class="fieldcontain required">
+							<label for="username">
+								<g:message code="springSecurity.login.username.label"/>
+							</label>				
+							<input type='text' class='text_' name='r_username' id='r_username' />
+						</div>
+					</g:if>
+					<div class="fieldcontain required">
+						<label for="r_email">
+							<g:message code="user.email.label" default="Email" class="registerInputs"/>
+						</label>
+						<input type='text' class='text_ email' name='r_email' id='r_email' />
+					</div>
+							
+					<input type='submit' id="submit" class="button" value='${message(code: "user.remember.button")}'/>					
+				</g:form>
+			</div>			
 		</div>
 		<div id="register-area">
 			<h2><g:message code="user.create.label" /></h2>
