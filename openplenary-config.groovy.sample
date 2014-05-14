@@ -48,6 +48,9 @@ grails.openplenary.mail.from = 'user@foo.bar'
 // The HTML layout. By default 'main' 
 grails.openplenary.layout = 'main'
 
+// The color style to be applied to the layout (blue, brown, green, orange, red, violet or yellow)
+grails.openplenary.style = 'yellow'
+
 // The name of the town, city or entity
 grails.openplenary.name = 'FooCity'
 

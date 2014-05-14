@@ -31,6 +31,7 @@ Released   : 20081009
         <div id="bar">
         	<div class="navLink"><a href="#project">Projecte</a></div>
            	<div class="navLink"><a href="#install">Instal·lació</a></div>
+           	<div class="navLink"><a href="#compile">Compilació</a></div>
            	<div class="navLink"><a href="#configure">Configuració</a></div>
             <div class="navLink"><a href="#license">Llicència</a></div>
       </div>
@@ -47,9 +48,32 @@ Released   : 20081009
         </div>
         <div class="contentTitle"><h1><a name="install">Instal·lació</a></h1></div>
         <div class="contentText">
+          <p>
+          	Per instal·lar OpenPlenary necessitaras un servidor d'aplicacions J2EE com <a href="http://tomcat.apache.org/">Tomcat</a> i, tot i que funciona per defecte 
+          	amb <a href="http://www.h2database.com">H2</a>, és recomanable fer servir una base de dades com <a href="http://www.mysql.com/">MySQL</a> o <a href="http://mariadb.org">MariaDB</a>.           	 
+          </p>
+          <p>
+          	Una vegada ho tinguis només cal seguir les instruccions següents:
+          </p>
+	      <ul>
+	      	<li><a href="https://github.com/IndignatsCardedeu/OpenPlenary/releases">Descarrega la última versió d'Open Plenary</a></li>
+	      	<li>Descomprimeix el fitxer zip</li>
+	      	<li>Desplega el fitxer war en el servidor d'aplicacions</li>
+	      </ul>
+	      
+	      <p>
+	      	Amb això tindràs funcionant l'aplicació amb la configuració per defecte i una base de dades efímera.  
+	      	Per customitzar el teu OpenPlenary, copia el fitxer openplenary-config.groovy.sample al path d'execució del servidor (en el cas de Tomcat seria a l'arrel del path on es troba instal·lat), <strong>renombra-ho com openplenary-config.groovy</strong> 
+	      	i edita-ho segons les teves necessitats. Ves a la secció de <a href="#configure">Configuració</a> per a més informació.
+	      </p>
+        
+		</div>        
+        <div class="contentTitle"><h1><a name="compile">Compilació</a></h1></div>
+        <div class="contentText">
+          <p>Si enlloc d'instalar-te el WAR prefereixes compilar tu mateix el projecte i remenar una mica, segueis les següents instruccions:</p>
           <p><a href="https://github.com/IndignatsCardedeu/OpenPlenary">Descarrega el codi font d'Open Plenary</a></p>
           <p>
-          	Open Plenary fa servir las versió 2.1.1 del framework Grails (pot funcionar amb versions superiors pero no l'hem provat). 
+          	Open Plenary fa servir las versió 2.2.4 del framework Grails (pot funcionar amb versions superiors pero no l'hem provat). 
           	<a href="http://grails.org/download">Descarrega el framework Grails</a> i segueix les següents <a href="http://grails.org/doc/latest/guide/gettingStarted.html">instruccions</a>.           	
           </p>          
           <p>
@@ -79,6 +103,7 @@ Released   : 20081009
           	<li><strong>mail:</strong> <a href="http://grails.org/plugin/mail">Mira la documentació del plugin mail per les opcions de configuració</a></li>
           	<li><strong>grails.openplenary.mail.from:</strong> Adreça de correu que es farà servir com a "from:"</li>
           	<li><strong>grails.openplenary.layout:</strong> Plantilla/disseny amb el que es visualitzarà OpenPlenary. Per defecte "main"</li>
+          	<li><strong>grails.openplenary.style:</strong> Estil de color que s'aplicará a la plantilla (blue, brown, green, orange, red, violet or yellow). Per defecte "yellow"</li>
           	<li><strong>grails.openplenary.name: </strong> Nom del poble, ciutat o entitat que fa servir OpenPlenary</li>
           	<li><strong>grails.openplenary.voting.allowAnonymous: </strong> Permet vots anònims. Per defecte "false"</li>
           	<li><strong>grails.openplenary.voting.maxAnonymousVotes: </strong> Màxim número de vots anònims permesos si la opció "grails.openplenary.voting.allowAnonymous" està activada. Per defecte 5</li>
