@@ -25,20 +25,20 @@
 			</div>
 		    <div id="menu">
 		        <ul>                                                                                                                      
-		            <li 
-		            	<g:if test="${params.action=='home'}">
-		            		class="current"
-		            	</g:if>
-		            >
-		            	<a class="current" href="${resource(dir:'/')}" title=""><g:message code="main.menu.option.home"/></a>
-		            </li>
 		            <li
 		            	<g:if test="${params.action=='sessions' || params.action=='session' || params.action=='item' || params.action=='tag'}">
 		            		class="current"
 		            	</g:if>
 		            >
 		            	<g:link controller="main" action="sessions"><g:message code="main.menu.option.plenary"/></g:link>
-		            </li>	            
+		            </li>	       
+		            <li
+		            	<g:if test="${params.action=='legislatures'}">
+		            		class="current"
+		            	</g:if>
+		            >
+		            	<g:link controller="main" action="legislatures"><g:message code="main.menu.option.mandate"/></g:link>
+		            </li>	
 		            <li
 		            	<g:if test="${params.action=='faq'}">
 		            		class="current"
@@ -75,7 +75,7 @@
 						<op:parties />
 					</div>
 					<div class="box-b">
-						<tc:tagCloud controller="tag" action="index" bean="${org.mayfifteen.openplenary.Subject}" color="${[start: '#888', end: '#444']}" id="tag" paramName="tag"/>
+						<op:tagCloud controller="tag" action="index" color="${[start: '#888', end: '#444']}" paramName="tag" size="${[start: 10, end: 22, unit: 'px']}"/>
 					</div>			
 				</div>		
 			</g:if>			

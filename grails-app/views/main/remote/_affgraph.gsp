@@ -1,0 +1,1 @@
+<op:partyAffinitiesChart party="${party}" mandate="${mandate.id}" multiple="true" />

@@ -6,20 +6,21 @@
 	</head>
 	<body>				
 		<div id="meetings-box">
-			<div class="meeting sessions"> 
-		    	<g:message code="mandate.name"/> ${mandate.name}
-	    	</div> 				
-			<g:each in="${meetings}" status="i" var="meeting">
+			<g:each in="${legislatures}" status="i" var="item">
 				<div class="meeting meeting_item"> 
 					<div class="meeting-name meeting">
-			    		<span class="date"><g:formatDate date="${meeting.startDate}" format="dd-MM" /></span>
-			    		<g:link action="session" id="${meeting.id}" >${meeting.name}</g:link>
+			    		<span class="date">${item.name}</span>
+			    		<g:link action="sessions" id="${item.id}">
+			    			<g:message code="mandate.name"/> 
+			    			<g:formatDate date="${item.startDate}" format="yyyy" /> /
+			    			<g:formatDate date="${item.endDate}" format="yyyy" />
+			    		</g:link>
 		    		</div>
 					 
 		    	</div> 			
 			</g:each>
 			<div id="pagebrowser">
-				<g:paginate total="${meetingsTotal}" params="${params}"/>
+				<g:paginate total="${legislaturesTotal}" />
 			</div>
 		</div>
 	</body>

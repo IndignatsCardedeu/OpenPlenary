@@ -23,7 +23,7 @@ function displayPartyVotesDialog(subject){
 	
 	$.get(contextPath + '/meeting/getSubjectPartyVotes/' + subject, function(data) {		
 		for (i=0; i<data.length; i++){		
-			if (data[i].voteUp!=0 || data[i].voteDown!=0 || data[i].abstention){
+			if (data[i].voteUp!=0 || data[i].voteDown!=0 || data[i].abstention!=0){
 				$("#voteUp_" + data[i].partyId).val(data[i].voteUp);
 				$("#voteDown_" + data[i].partyId).val(data[i].voteDown);
 				$("#voteAbstention_" + data[i].partyId).val(data[i].abstention);

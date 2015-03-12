@@ -5,6 +5,7 @@
 		<g:javascript library="jquery" />	
 	</head>
 	<body>	
+		<g:if test="${currentMeeting}">
 		<div id="current_meeting">
 			<div id="current_meeting_main">
 				<div id="current_meeting_name">
@@ -69,6 +70,7 @@
 				</div>
 			</div>
 		</div>
+		</g:if>
 		<sec:ifLoggedIn>
 		   	<div id="affinities" class="affinities affinities_home">
 		   		<h2><g:message code="main.affinity.user"/></h2>
@@ -87,7 +89,7 @@
 			</div>
 			<div class="last_meeting_block block_1">
 				<h2><g:message code="main.tagcloud"/></h2>
-				<tc:tagCloud controller="main" action="tag" bean="${org.mayfifteen.openplenary.Subject}" color="${[start: '#888', end: '#444']}" />	
+				<op:tagCloud controller="tag" action="index" color="${[start: '#888', end: '#444']}" paramName="tag" size="${[start: 10, end: 22, unit: 'px']}" />
 			</div>				
 			<div class="last_meeting_block block_2">
 				<h2><g:message code="main.plenaries"/></h2>

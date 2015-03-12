@@ -95,6 +95,11 @@ ul li {
 	background-color: #FEEF9F;
 }
 
+.sessions {
+	background-color: #FDD60F;	
+	border-bottom: 5px solid #FCBD0F;
+}
+
 .meeting_point_area {
 	background-color: #FEEF9F;
 }
@@ -155,11 +160,11 @@ h3{
 	background-color: #FFFAE5;
 }
 
-.affinities {
+.affinities, .partyaffinity {
 	background-color: #FFF7CF;
 }
 
-.affinities .selected {
+.affinities .selected, .partyaffinity .selected {
 	background: #FDD60F;
 }
 

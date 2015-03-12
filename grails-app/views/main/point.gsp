@@ -100,7 +100,8 @@
 						<ul class="meeting-point-item-list">
 							<li class="meeting-point-item taglist-item">
 								<g:each in="${item.tags}" var="tag" status="j">						 	
-									<g:link controller="main" action="tag" id="${tag}">${tag}</g:link><g:if test="${j+1<item.tags.size()}">,</g:if>
+									<g:link controller="tag" action="index" id="${item.meeting.mandate.id}" params="${[tag: tag]}">${tag}</g:link>
+									<g:if test="${j+1<item.tags.size()}">,</g:if>
 								</g:each>
 							</li>
 							<li class="meeting-point-item social-item">

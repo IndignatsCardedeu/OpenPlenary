@@ -20,6 +20,16 @@
 	</div>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: partyInstance, field: 'color', 'error')} ">
+	<label for="color">
+		<g:message code="admin.party.color.label" default="Color" />
+		
+	</label>
+	<div class="formfield">
+		<g:textField name="color" value="${partyInstance?.color}" class="inp-form"/>
+	</div>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: partyInstance, field: 'logo', 'error')} ">
 	<label for="logo">
 		<g:message code="admin.party.logo.label" default="Logo" />		

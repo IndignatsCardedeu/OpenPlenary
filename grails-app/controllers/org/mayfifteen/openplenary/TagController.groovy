@@ -21,17 +21,21 @@ package org.mayfifteen.openplenary
 class TagController {
 
 	def index(){
+		def mandate = params.id ? Mandate.get(params.id) : session["currentMandate"]
 		def subjects = Subject.findAllByTagWithCriteria(params.tag){
 			meeting {
 				eq("published", true)
+				eq("mandate", mandate)
 				order("startDate","desc")
 			}
 		}
-		[subjects: subjects]
+		[subjects: subjects, mandate: mandate]
 	}
 	
 	def party(){
 		def party = PoliticalParty.get(params.id)
+		def mandate = params.mandate ? Mandate.get(params.mandate) : session["currentMandate"]
+		
 		def subjects = Subject.findAllByTagWithCriteria(params.tag){
 			partyProposals {
 				eq("party", party)
@@ -39,6 +43,7 @@ class TagController {
 			}
 			meeting {
 				eq("published", true)
+				eq("mandate", mandate)
 				order("startDate","desc")
 			}
 		}
@@ -57,5 +62,9 @@ class TagController {
 		}
 		
 		[meeting: meeting, subjects: subjects]
+	}
+	
+	def mandate(){
+		def mandate = Mandate.get(params.id)
 	}
 }

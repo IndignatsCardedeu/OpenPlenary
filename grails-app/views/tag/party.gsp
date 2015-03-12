@@ -72,7 +72,7 @@
 								<div class="meeting_point_tags">
 									<g:each in="${item.tags}" var="tag" status="j">
 									 	<g:if test="${j>0}">,</g:if>
-										<g:link controller="main" action="tag" id="${tag}">${tag}</g:link>
+										<g:link controller="tag" action="party" id="${party.id}" params="${[tag: tag, mandate: item.meeting.mandate.id]}">${tag}</g:link>
 									</g:each>
 								</div>
 								<g:link controller="main" action="point" id="${item.id}" class="button">${item.comments.size()} <g:message code="meeting.point.comments"/></g:link>

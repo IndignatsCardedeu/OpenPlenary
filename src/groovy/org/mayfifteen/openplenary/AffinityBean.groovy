@@ -5,4 +5,6 @@ class AffinityBean {
 	String partyName
 	String partyLogo
 	int value
+	Long meetingId
+	Date meetingDate
 }

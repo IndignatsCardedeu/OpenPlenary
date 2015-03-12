@@ -68,5 +68,6 @@ grails.project.dependency.resolution = {
 		
 		compile "org.grails.plugins:spring-security-facebook:0.11"
 		compile ":simple-captcha:0.9.1"
+		compile ":google-visualization:1.0.1"
     }
 }

@@ -20,6 +20,7 @@ package org.mayfifteen.openplenary
 
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
+import org.grails.taggable.TagLink
 
 import org.mayfifteen.openplenary.utils.StringUtils
 
@@ -27,24 +28,29 @@ class MainController {
 	
 	def springSecurityService
 	def affinityService
+	def taggableService
 
     def home(){ 
 		int max = 10
-		def meetings = Meeting.findAllByPublished(true, [max: max, sort: "startDate", order: "desc"])
-		def mainMeeting = meetings.get(0)
-		def relevants = getRelevants(mainMeeting.subjects)
-		
-		def parties = PoliticalParty.list(sort: "name")		
+		Mandate mandate = session["currentMandate"]
+		def meetings = Meeting.findAllByPublishedAndMandate(true, mandate, [max: max, sort: "startDate", order: "desc"])
+		def mainMeeting = meetings ? meetings.get(0) : null
 		def affinities
+		def relevants
+		def tags
+		
+		if (mainMeeting){
+			relevants = getRelevants(mainMeeting.subjects)
+			tags = mainMeeting.tags
+		}
 			
 		if (springSecurityService.currentUser) 
 			affinities = affinityService.getUserAffinity(springSecurityService.currentUser)
 		
 		[
 			currentMeeting: mainMeeting, 
-			relevants: relevants, 
-			parties: parties, 
-			currentMeetingTags: mainMeeting.tags, 
+			relevants: relevants, 			 
+			currentMeetingTags: tags, 
 			meetings: meetings,
 			affinities: affinities
 		]
@@ -67,11 +73,11 @@ class MainController {
 	
 	def party(){
 		PoliticalParty party = PoliticalParty.get(params.id)
-
-		def affinities = affinityService.getPartyAffinity(party.id)
-		def acceptance = affinityService.getPartyPopularAcceptance()
+		def mandate = params.mandate ? Mandate.get(params.mandate) : session["currentMandate"]
 		
-		def proposals = PartyProposal.createCriteria().list() {
+		def qparams = [max: 5, offset: 0]
+
+		def proposals = PartyProposal.createCriteria().list(qparams) {
 							eq("party", party)
 							or {
 								eq("author", true) 
@@ -80,11 +86,11 @@ class MainController {
 							subject {
 								meeting {
 									eq("published", true)
+									eq("mandate", mandate)
 									order("startDate", "desc")
 								}
 								order("id", "desc")
-							}	
-							maxResults(10)
+							}								
 						}
 		
 		def voteUpList = PartyProposal.createCriteria().list() {
@@ -93,11 +99,14 @@ class MainController {
 							subject {
 								meeting {
 									eq("published", true)
+									eq("mandate", mandate)
 									order("startDate", "desc")
 								}
 								order("id", "desc")
 							}							
 						}
+		
+		int totalVoteUp = voteUpList.size()
 		
 		def tags = [:]
 		voteUpList.each {
@@ -107,19 +116,19 @@ class MainController {
 			}
 		}
 		
-		if (voteUpList.size()>10) voteUpList = voteUpList[0..9]
+		if (voteUpList.size()>5) voteUpList = voteUpList[0..4]
 		
-		def voteDownList = PartyProposal.createCriteria().list() {
+		def voteDownList = PartyProposal.createCriteria().list(qparams) {
 								eq("party", party)
 								gt("voteDown", 0)
 								subject {
 									meeting {
 										eq("published", true)
+										eq("mandate", mandate)
 										order("startDate", "desc")
 									}
 									order("id", "desc")
-								}	
-								maxResults(10)
+								}									
 							}
 		
 		[
@@ -128,8 +137,10 @@ class MainController {
 			voteUpList: voteUpList, 
 			voteDownList: voteDownList,
 			proposals: proposals,
-			affinities: affinities,
-			acceptance: acceptance
+			totalProposals: proposals.totalCount,
+			totalVoteUp: totalVoteUp,
+			totalvoteDown: voteDownList.totalCount,
+			mandate: mandate
 		]
 	}
 	
@@ -152,7 +163,14 @@ class MainController {
 	
 	def sessions(){
         params.max = Math.min(params.max ? params.int('max') : 15, 100)
-        [meetings: Meeting.findAllByPublished(true, params), meetingsTotal: Meeting.countByPublished(true)]
+		
+		Mandate mandate = params.id ? Mandate.get(params.id) : session["currentMandate"]		
+		
+        [
+			meetings: Meeting.findAllByPublishedAndMandate(true, mandate, params), 
+			meetingsTotal: Meeting.countByPublishedAndMandate(true, mandate),
+			mandate: mandate
+		]
 	}
 	
 	def session(){
@@ -168,6 +186,38 @@ class MainController {
 		}
 	}
 	
+	def legislatures(){
+		params.max = Math.min(params.max ? params.int('max') : 15, 100)
+		def legislatures = Mandate.findAllByPublished(true, params).sort{it.startDate}.reverse()
+		def legislaturesTotal = Mandate.countByPublished(true)
+		[legislatures: legislatures, legislaturesTotal: legislaturesTotal]
+	}
+	
+	def legislature(){
+		Mandate mandate = Mandate.get(params.id)
+		def meetings = Meeting.findAllByMandate(mandate, [max: 10, sort: "startDate", order: "desc"])
+		
+		[mandate: mandate, meetings: meetings]
+	}
+	
+	def partyAffinitiesGraph(){
+		Mandate mandate = Mandate.get(params.mandate)
+		render(template: "remote/affgraph", model: [party: params.party, mandate: mandate])
+	}
+	
+	private List calcRow(def row1, def row2, def total){
+		def res = []
+		row2.eachWithIndex { obj, index ->
+			if (index==0) res.add(obj)
+			else {
+				row1[index-1] = row1[index-1] + obj
+				res.add((int)(row1[index-1]*100/total))
+			}  
+		}
+		
+		return res
+	}
+	
 	def point(){
 		Subject subject = Subject.get(params.id)
 		if (subject && subject.meeting.published){
@@ -180,6 +230,8 @@ class MainController {
 	def agree(){
 		params.max = Math.min(params.max ? params.int('max') : 20, 100)
 		
+		Mandate mandate = params.mandate ? Mandate.get(params.mandate) : session["currentMandate"]
+		
 		def party = PoliticalParty.get(params.id)
 		def proposals = PartyProposal.createCriteria().list(params) {
 			eq("party", party)
@@ -187,17 +239,20 @@ class MainController {
 			subject {
 				meeting {
 					eq("published", true)
+					eq("mandate", mandate)
 					order("startDate", "desc")
 				}
 				order("id", "desc")
 			}
 		}
 		
-		render(view: "partyProposals", model: [party: party, proposals: proposals, subjectsTotal: proposals.totalCount])
+		render(view: "partyProposals", model: [party: party, mandate: mandate, proposals: proposals, subjectsTotal: proposals.totalCount])
 	}
 	
 	def against(){
 		params.max = Math.min(params.max ? params.int('max') : 20, 100)
+		
+		Mandate mandate = params.mandate ? Mandate.get(params.mandate) : session["currentMandate"]
 		
 		def party = PoliticalParty.get(params.id)
 		def proposals = PartyProposal.createCriteria().list(params) {
@@ -206,17 +261,20 @@ class MainController {
 			subject {
 				meeting {
 					eq("published", true)
+					eq("mandate", mandate)
 					order("startDate", "desc")
 				}
 				order("id", "desc")
 			}
 		}
 		
-		render(view: "partyProposals", model: [party: party, proposals: proposals, subjectsTotal: proposals.totalCount])
+		render(view: "partyProposals", model: [party: party, mandate: mandate, proposals: proposals, subjectsTotal: proposals.totalCount])
 	}
 	
 	def proposals(){
 		params.max = Math.min(params.max ? params.int('max') : 20, 100)
+		
+		Mandate mandate = params.mandate ? Mandate.get(params.mandate) : session["currentMandate"]
 		
 		def party = PoliticalParty.get(params.id)
 		def proposals = PartyProposal.createCriteria().list(params) {
@@ -228,13 +286,14 @@ class MainController {
 			subject {
 				meeting {
 					eq("published", true)
+					eq("mandate", mandate)
 					order("startDate", "desc")
 				}
 				order("id", "desc")
 			}
 		}
 		
-		render(view: "partyProposals", model: [party: party, proposals: proposals, subjectsTotal: proposals.totalCount])
+		render(view: "partyProposals", model: [party: party, mandate: mandate, proposals: proposals, subjectsTotal: proposals.totalCount])
 	}
 	
 	def voteUp(){

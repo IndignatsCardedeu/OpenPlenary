@@ -25,6 +25,7 @@ class Mandate {
 	String name
 	Date startDate
 	Date endDate
+	boolean published
 
 	static mapping = {
 		composition sort: "members", order: "desc"
@@ -33,4 +34,8 @@ class Mandate {
     static constraints = {
 		
     }
+	
+	def getPoliticalParties(){
+		return PoliticalParty.executeQuery("SELECT p FROM PoliticalParty p, MandateComposition m WHERE m.party.id=p.id AND m.mandate=:mandate ORDER BY m.members DESC", [mandate: this])
+	}
 }

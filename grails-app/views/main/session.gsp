@@ -90,7 +90,7 @@
 								<div class="meeting_point_area_buttons">
 									<div class="meeting_point_tags ">										
 										<g:each in="${subject.tags}" var="tag" status="j">																					 
-											<g:link controller="main" action="tag" id="${tag}">${tag}</g:link><g:if test="${j+1<subject.tags.size()}">,</g:if>
+											<g:link controller="tag" action="index" id="${subject.meeting.mandate.id}" params="${[tag: tag]}">${tag}</g:link><g:if test="${j+1<subject.tags.size()}">,</g:if>
 										</g:each>
 									</div>
 									<g:link controller="main" action="point" id="${subject.id}" class="button">${subject.comments.size()} <g:message code="meeting.point.comments"/></g:link>

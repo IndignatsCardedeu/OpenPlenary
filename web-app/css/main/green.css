@@ -155,11 +155,11 @@ h3{
 	background-color: #D8EFAA;
 }
 
-.affinities {
+.affinities, .partyaffinity {
 	background-color: #EAF7D4;
 }
 
-.affinities .selected {
+.affinities .selected, .partyaffinity .selected {
 	background: #B5DD92;
 }
 

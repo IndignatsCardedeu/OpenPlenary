@@ -162,10 +162,10 @@ class MeetingController {
 							if (!partyVote){
 					partyVote = new PartyProposal(subject: subject, party: party)
 				}
-				
-				partyVote.voteUp = params.voteUp[i].toInteger()
-				partyVote.voteDown = params.voteDown[i].toInteger()
-				partyVote.abstention = params.abstention[i].toInteger()
+
+				partyVote.voteUp = (params.voteUp[i]!="") ? params.voteUp[i].toInteger() : 0
+				partyVote.voteDown = (params.voteDown[i]!="") ? params.voteDown[i].toInteger() : 0
+				partyVote.abstention = (params.abstention[i]!="") ? params.abstention[i].toInteger() : 0
 				partyVote.save(flush:true, failOnError: true)
 				
 				i++
@@ -178,8 +178,7 @@ class MeetingController {
 	}
 	
 	def getSubjectPartyVotes(){
-		def subject = Subject.get(params.id)
-		
+		def subject = Subject.get(params.id)		
 		render subject.partyProposals as JSON
 	}
 	

@@ -517,6 +517,12 @@ textarea {
 	text-decoration: underline;
 }
 
+.sessions {
+	font-weight: bold;
+	padding: 5px 0 3px 10px;
+	margin-bottom: 20px;
+}
+
 .party-name {
 	height: 28px;
 	text-transform: uppercase;
@@ -944,6 +950,23 @@ iframe {
 	width: 100px;
 }
 
+.partyaffinity {
+	padding: 5px 0 0 10px;
+	margin-bottom: 0px;
+	overflow: auto;
+}
+
+.partyaffinity h2 {
+	float:left;
+	margin: 10px 10px 10px 10px !important;
+	width: 100px;
+}
+
+.graph {
+	border: 5px solid #92B5DD;
+	margin-bottom: 10px;
+}
+
 .affinity_block {
 	margin: 0 10px 0 10px;
 	padding: 3px 2px 3px 2px;
@@ -988,3 +1011,8 @@ iframe {
 	padding: 0;
 	margin: 5px 0 0 0;
 }	
+
+.legisinfo {
+	float:right;
+	margin-top:9px;	
+}

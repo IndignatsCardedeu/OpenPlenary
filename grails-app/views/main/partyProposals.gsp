@@ -47,6 +47,7 @@
 			    		<g:elseif test="${params.action=='proposals'}">
 			    			<g:message code="party.proposals.author"/>
 			    		</g:elseif>
+			    		<span class="legisinfo">${mandate.name}</span>
 		    		</div>
 		    	</div> 	
 		    	<g:each in="${proposals}" var="item" status="i" > 

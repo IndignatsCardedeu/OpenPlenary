@@ -25,9 +25,11 @@ class PoliticalParty {
 	String name
 	String description
 	String logo	
+	String color	
 
     static constraints = {
 		name(nullable: false, blank: false)
 		logo(nullable: true, blank: true)
+		color(nullable: true, blank: true)
     }
 }

@@ -86,6 +86,10 @@ function validateComment(){
 	return (comment!="") 
 }
 
+function showPartyAffinityGraph(data, elementId){
+	$(elementId).html(data);	
+}
+
 $(document).ready(function(){
 	$('.popup').click(function(event) {
 	    var width  = 575,

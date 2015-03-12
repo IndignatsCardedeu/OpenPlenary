@@ -41,13 +41,13 @@ class MandateController {
     }
 
     def save() {
-        def mandateInstance = new Mandate(params)
+		def mandateInstance = new Mandate(params)
 		
         if (!mandateInstance.save(flush: true)) {
             render(view: "create", model: [mandateInstance: mandateInstance])
             return
         }
-
+	
         flash.message = message(code: 'default.created.message', args: [message(code: 'mandate.label', default: 'Mandate'), mandateInstance.id])
         redirect(action: "composition", id: mandateInstance.id)
     }
@@ -77,6 +77,7 @@ class MandateController {
 
     def update(Long id, Long version) {
         def mandateInstance = Mandate.get(id)
+		
         if (!mandateInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'mandate.label', default: 'Mandate'), id])
             redirect(action: "list")
@@ -92,11 +93,9 @@ class MandateController {
                 return
             }
         }
-		for( Iterator iter = mandateInstance.composition.iterator(); iter.hasNext(); ){
-			iter.next()
-			iter.remove()
-		}
 		
+		mandateInstance.properties = params
+
         if (!mandateInstance.save(flush: true, failOnError: true)) {
             render(view: "edit", model: [mandateInstance: mandateInstance])
             return

@@ -25,7 +25,7 @@
 		<g:message code="admin.meeting.mandate.label" default="Mandate" />		
 	</label>
 	<div class="formfield">
-		<g:select name="mandate.id" from="${org.mayfifteen.openplenary.Mandate.list()}" optionKey="id" optionValue="name" value="${meetingInstance?.mandate}" />
+		<g:select name="mandate.id" from="${org.mayfifteen.openplenary.Mandate.list().reverse()}" optionKey="id" optionValue="name" value="${meetingInstance?.mandate}" />
 	</div>
 </div>
 
