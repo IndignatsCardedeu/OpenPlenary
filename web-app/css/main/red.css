@@ -95,6 +95,12 @@ ul li {
 	background-color: #F4ABAB;
 }
 
+.sessions {
+	background-color: #F26F6F;
+	color: #FFFFFF;
+	border-bottom: 5px solid #E53737;
+}
+
 .meeting_point_area {
 	background-color: #F4ABAB;
 }
@@ -170,4 +176,8 @@ h3{
 #related {
 	background-color:#F2C4C4;
 	border:1px solid #F26F6F;	
+}
+
+.graph {
+	border: 5px solid #F26F6F;
 }

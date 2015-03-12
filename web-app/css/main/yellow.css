@@ -97,6 +97,7 @@ ul li {
 
 .sessions {
 	background-color: #FDD60F;	
+	color: #333333;
 	border-bottom: 5px solid #FCBD0F;
 }
 
@@ -175,4 +176,8 @@ h3{
 #related {
 	background-color:#FFFAE5;
 	border:1px solid #FDD60F;	
+}
+
+.graph {
+	border: 5px solid #FDD60F;
 }
