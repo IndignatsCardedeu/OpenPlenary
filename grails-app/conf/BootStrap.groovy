@@ -116,6 +116,7 @@ class BootStrap {
 				mandate = new Mandate(name:'2011/2015')
 				mandate.setStartDate(new Date().parse("dd/MM/yyyy", "22/05/2011"))
 				mandate.setEndDate(new Date().parse("dd/MM/yyyy", "22/05/2015"))
+				mandate.published = true
 				
 				def ciu = new MandateComposition()
 				ciu.members = 6
