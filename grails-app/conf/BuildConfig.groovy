@@ -39,7 +39,10 @@ grails.project.dependency.resolution = {
         grailsHome()
         grailsCentral()
         mavenCentral()
-
+		
+		//Added to fix problems solving plugin dependencies
+		mavenRepo "https://repo.grails.org/grails/plugins"
+		
         // uncomment these to enable remote dependency resolution from public Maven repositories
         //mavenCentral()
         //mavenLocal()
