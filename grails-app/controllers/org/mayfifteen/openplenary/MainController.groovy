@@ -190,7 +190,12 @@ class MainController {
 		params.max = Math.min(params.max ? params.int('max') : 15, 100)
 		def legislatures = Mandate.findAllByPublished(true, params).sort{it.startDate}.reverse()
 		def legislaturesTotal = Mandate.countByPublished(true)
-		[legislatures: legislatures, legislaturesTotal: legislaturesTotal]
+		
+		if (legislaturesTotal>1){		
+			[legislatures: legislatures, legislaturesTotal: legislaturesTotal]
+		}else{
+			redirect(action: "legislature", id: legislatures[0].id)
+		}
 	}
 	
 	def legislature(){
