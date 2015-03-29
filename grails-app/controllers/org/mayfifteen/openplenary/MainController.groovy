@@ -366,26 +366,28 @@ class MainController {
 			def anonymousVotes = 0
 			def votes = 0
 			
-			if (user){
-				votes = SubjectUserVote.countBySubjectAndUser(subject, user)
-			}else {
-				votes = SubjectUserVote.countBySubjectAndHashAndUserIsNull(subject, hash)
-				anonymousVotes = SubjectUserVote.countBySubjectAndUserIsNull(subject)
-			}
-			
-			if (user && votes>0){
-				result = "error"
-			}else if (!user && !allowAnonymous){
-				result = "notloggedin"
-			}else if (!user && allowAnonymous && (votes>0 || anonymousVotes>=maxAnonymous)){
-				if (votes>0) result = "error"			
-					else result = "maxanonymous"
-			}else{
-				userVote.user = user
-				userVote.subject = subject
-				userVote.vote = value
-				if (!userVote.save(flush: true)) result = "error"
-			}		 
+			if ((subject.meeting.startDate + 30)>new Date()){
+				if (user){
+					votes = SubjectUserVote.countBySubjectAndUser(subject, user)
+				}else {
+					votes = SubjectUserVote.countBySubjectAndHashAndUserIsNull(subject, hash)
+					anonymousVotes = SubjectUserVote.countBySubjectAndUserIsNull(subject)
+				}
+				
+				if (user && votes>0){
+					result = "error"
+				}else if (!user && !allowAnonymous){
+					result = "notloggedin"
+				}else if (!user && allowAnonymous && (votes>0 || anonymousVotes>=maxAnonymous)){
+					if (votes>0) result = "error"			
+						else result = "maxanonymous"
+				}else{
+					userVote.user = user
+					userVote.subject = subject
+					userVote.vote = value
+					if (!userVote.save(flush: true)) result = "error"
+				}	
+			}else result = "votingexpires"	 
 		}else result = "error"
 	
 		return result

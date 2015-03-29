@@ -11,10 +11,17 @@
 				$.validator.addMethod("mailOrUser", function(value) {				
 					return ($("#r_username").val()!="" || $("#r_email").val()!="");
 				}, "<g:message code="user.remember.error.mailOrUser"/>");
+
+				$.validator.addMethod("whiteSpaces", function(value) {		
+					return !/\s/g.test(value);
+				}, "<g:message code="user.username.error.whiteSpaces"/>");				
 				
 				$("#registerForm").validate({
 					rules: {
-						username: "required",
+						username: {
+							required: true,
+							whiteSpaces: true
+						},
 						password: "required",
 						confirm: {
 							required: true,
@@ -27,7 +34,9 @@
 					},
 					messages: {
 						terms: "<g:message code="user.terms.error.notread"/>",
-						username: "<g:message code="user.username.error.required" />",
+						username: {
+							required: "<g:message code="user.username.error.required" />"							
+						},
 						password: "<g:message code="user.password.error.required" />",
 						confirm: {
 							required: "<g:message code="user.password.rewrite" />",

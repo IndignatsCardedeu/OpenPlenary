@@ -7,9 +7,16 @@
 		<jq:plugin name="validate"></jq:plugin>
 		<script type="text/javascript">
 			$(document).ready(function(){
+				$.validator.addMethod("whiteSpaces", function(value) {		
+					return !/\s/g.test(value);
+				}, "<g:message code="user.username.error.whiteSpaces"/>");	
+				
 				$("#registerForm").validate({
 					rules: {
-						username: "required",
+						username: {
+							required: true,
+							whiteSpaces: true
+						},
 						confirm: {
 							equalTo: "#password"
 						},
@@ -19,7 +26,9 @@
 						}
 					},
 					messages: {
-						username: "<g:message code="user.username.error.required" />",
+						username: {
+							required: "<g:message code="user.username.error.required" />"							
+						},
 						confirm: "<g:message code="user.password.error.notmatch" />",
 						email: "<g:message code="user.email.error.notvalid" />"
 					}					

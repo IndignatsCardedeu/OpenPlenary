@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="${grailsApplication.config.grails.openplenary.layout}">
-		<title> :: ${mandate.name})</title>
+		<title> :: ${mandate.name}</title>
 		<g:javascript library="jquery" />
 		<gvisualization:apiImport/> 
 	</head>
