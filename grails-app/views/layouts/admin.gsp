@@ -155,7 +155,7 @@
 	
 		<!-- start logo -->
 		<div id="logo">
-			Open Plenary
+			<g:link controller="main" action="home">Open Plenary</g:link>
 		</div>
 		<!-- end logo -->
 		 	

@@ -40,7 +40,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="formfield">
-		<g:field name="language" type="number" value="${FAQInstance.language}" class="inp-form"/>
+		<g:textField name="language" value="${FAQInstance.language}" class="inp-form"/>
 	</div>
 </div>
 

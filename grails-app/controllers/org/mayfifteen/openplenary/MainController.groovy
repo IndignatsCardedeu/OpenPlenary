@@ -62,7 +62,9 @@ class MainController {
 	}
 	
 	def contact(){
-		def contact = Content.findByKeyname("CONTACT")
+		def language = org.springframework.web.servlet.support.RequestContextUtils.getLocale(request).language
+		def contact = Content.findByKeynameAndLanguage("CONTACT", language)
+		if (!contact) contact = new Content();
 		render(view: "content", model: [content: contact])
 	}
 	

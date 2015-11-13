@@ -67,6 +67,11 @@ class CustomTagLib {
 		out << render(template:"/main/includes/composition", model: [parties: parties])
 	}
 	
+	def mandates = { attrs ->
+		def mandates = Mandate.findAllByPublished(true, params).sort{it.startDate}.reverse()
+		out << render(template:"/main/includes/mandates", model: [mandates: mandates])
+	}
+	
 	def partyAffinitiesChart = { attrs ->
 		Mandate mandate = session["currentMandate"]
 		boolean multiple = attrs.multiple ? attrs.multiple.toBoolean() : false

@@ -33,11 +33,11 @@
 		            	<g:link controller="main" action="sessions"><g:message code="main.menu.option.plenary"/></g:link>
 		            </li>	       
 		            <li
-		            	<g:if test="${params.action=='legislatures'}">
+		            	<g:if test="${params.action=='legislatures' || params.action=='legislature'}">
 		            		class="current"
 		            	</g:if>
 		            >
-		            	<g:link controller="main" action="legislatures"><g:message code="main.menu.option.mandate"/></g:link>
+		            	<g:link controller="main" action="legislature" id="${session.currentMandate.id}"><g:message code="main.menu.option.mandate"/></g:link>
 		            </li>	
 		            <li
 		            	<g:if test="${params.action=='faq'}">
@@ -70,13 +70,22 @@
 			<g:layoutBody/>	
 			<g:if test="${params.action!='home' && params.action!='profile' && params.action!='auth' && params.action!='signup' && params.action!='register' && params.action!='update'}">
 				<div id="box-area">
+					<sec:ifAllGranted roles="ROLE_ADMIN">
+						<div class="box-a">
+							<h3><g:link controller="main" action="admin">Admin</g:link></h3>
+						</div>
+					</sec:ifAllGranted>
 					<div class="box-a">
 						<h3><g:message code="party.title" /></h3>
 						<op:parties />
 					</div>
+					<div class="box-c">
+						<h3><g:message code="mandate.title" /></h3>
+						<op:mandates />
+					</div>						
 					<div class="box-b">
 						<op:tagCloud controller="tag" action="index" color="${[start: '#888', end: '#444']}" paramName="tag" size="${[start: 10, end: 22, unit: 'px']}"/>
-					</div>			
+					</div>								
 				</div>		
 			</g:if>			
 		</div>

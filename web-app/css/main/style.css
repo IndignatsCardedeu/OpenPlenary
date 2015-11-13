@@ -597,6 +597,33 @@ textarea {
     padding: 5px 10px;	
 }
 
+.box-c {
+	width: 198px;	
+	margin-bottom: 15px;
+	padding: 10px 15px 10px 15px;
+}
+
+.box-c a:hover {
+	text-decoration: underline;
+}
+
+.box-c h3 {
+	margin: 0;
+	padding: 0;
+}
+
+.box-c ul {
+	margin: 0;
+	padding: 0;	
+}
+
+.box-c ul li {
+	font-size: 10px;
+	padding: 0 0 0 12px;
+	margin: 0 0 5px 0;
+}
+
+
 #subjects-relevant-list {
 	font-size: 12px;
 	margin: 20px 0px 20px 0px;

@@ -32,7 +32,7 @@
 	width="690" 
 	height="400" 
 	axisTitlesPosition="in"
-	chartArea="${new Expando(width: '570', height: '80%', left:40)}"								
+	chartArea="${new Expando(width: '540', height: '80%', left:40)}"								
 	vAxis="${new Expando(title: '%')}" 
 	hAxis="${new Expando(title: 'Date')}" 
 	series="${new Expando(affColors)}"
