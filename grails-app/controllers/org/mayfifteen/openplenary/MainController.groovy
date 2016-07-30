@@ -26,33 +26,27 @@ import org.mayfifteen.openplenary.utils.StringUtils
 
 class MainController {
 	
-	def springSecurityService
-	def affinityService
+	def springSecurityService	
 	def taggableService
 
     def home(){ 
 		int max = 10
 		Mandate mandate = session["currentMandate"]
 		def meetings = Meeting.findAllByPublishedAndMandate(true, mandate, [max: max, sort: "startDate", order: "desc"])
-		def mainMeeting = meetings ? meetings.get(0) : null
-		def affinities
+		def mainMeeting = meetings ? meetings.get(0) : null		
 		def relevants
 		def tags
 		
 		if (mainMeeting){
 			relevants = getRelevants(mainMeeting.subjects)
 			tags = mainMeeting.tags
-		}
-			
-		if (springSecurityService.currentUser) 
-			affinities = affinityService.getUserAffinity(springSecurityService.currentUser)
+		}			
 		
 		[
 			currentMeeting: mainMeeting, 
 			relevants: relevants, 			 
 			currentMeetingTags: tags, 
 			meetings: meetings,
-			affinities: affinities
 		]
 	}
 	

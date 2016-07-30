@@ -71,17 +71,6 @@
 			</div>
 		</div>
 		</g:if>
-		<sec:ifLoggedIn>
-		   	<div id="affinities" class="affinities affinities_home">
-		   		<h2><g:message code="main.affinity.user"/></h2>
-	    		<g:each in="${affinities}" var="item">
-	    			<div class="affinity_block">
-	    				<g:link controller="main" action="party" id="${item.partyId}"><img src="${createLink(controller:'files', action:'logo', id: item.partyLogo)}" alt="${item.partyName}" title="${item.partyName}"/></g:link> 
-	    				${item.value}% 
-	    			</div>
-	    		</g:each>
-	    	</div>		
-    	</sec:ifLoggedIn>
 		<div id="last_meetings">
 			<div class="last_meeting_block block_0">
 				<h2><g:message code="main.parties"/></h2>

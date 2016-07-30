@@ -17,7 +17,7 @@
 			</g:remoteLink>
 		</g:if>
 		<g:else>
-			<g:link controller="main" action="party" id="${item.partyId}"> 
+			<g:link controller="main" action="party" id="${item.partyId}" params="${[mandate: mandate.id]}"> 
 				<img src="${createLink(controller:'files', action:'logo', id: item.partyLogo)}" alt="${item.partyName}" title="${item.partyName}"/>
 			</g:link>
 		</g:else>

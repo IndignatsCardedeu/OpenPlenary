@@ -86,6 +86,7 @@ class CustomTagLib {
 				model: [
 						affinities: affinities, 
 						partyId: partyId, 
+						mandate: mandate,
 						multiple: multiple,
 						affCols: affParties.affCols, 
 						affData: affParties.affData, 

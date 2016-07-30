@@ -29,7 +29,7 @@ class WebUserController {
 	def authenticateService
 	def messageSource
 	def grailsApplication
-	def simpleCaptchaService
+	def simpleCaptchaService	
 
     def signup() {
 		def config = SpringSecurityUtils.securityConfig
