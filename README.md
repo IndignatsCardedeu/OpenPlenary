@@ -2,6 +2,7 @@
 
 ## Overview
 OpenPlenary is a web application to open the city council plenaries and let the people know the decisions taken by the councilors. It it developed using the Groovy language and the Grails framework.
+See it live [here](http://cardedeu.plensoberts.cat)
 
 ## Build Instructions
 
